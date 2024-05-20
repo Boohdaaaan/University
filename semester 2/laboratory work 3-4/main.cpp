@@ -10,13 +10,16 @@ using namespace geometry;
 using namespace util;
 
 
+void displayLaboratoryInfo() {
+    std::cout << "Author: Bohdan Kuznetsov K-15\n";
+    std::cout << "Laboratory 4: Checking the intersection of two quadrilaterals\n";
+}
 
 
 int main() {
-    // Output author's name and task description
-    cout << "Kuznetsov Bohdan K-15\n";
-    cout << "Checking the intersection of two quadrilaterals\n";
-
+    // Output author's name and laboratory title
+    displayLaboratoryInfo();
+    
     try {
         // Get coordinates of vertices of the first quadrilateral from the user
         cout << "Enter the coordinates of vertices of the first quadrilateral (x1, y1), (x2, y2), (x3, y3), (x4, y4): ";
