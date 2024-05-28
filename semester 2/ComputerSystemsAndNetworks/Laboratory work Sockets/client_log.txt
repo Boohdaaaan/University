@@ -1,0 +1,28 @@
+2024-05-28 23:56:07,993 - Sent - WHO
+2024-05-28 23:56:07,993 - Received - Author: Bohdan Kuznetsov, Variant: 23 - Network Performance Testing
+2024-05-28 23:56:07,993 - Sent - TEST with data size 1899
+2024-05-28 23:56:07,993 - Received - TEST received with data size 1899
+2024-05-28 23:56:07,993 - Received - TEST with data size 34916
+2024-05-28 23:56:07,993 - Sent - TEST received with data size 34916
+2024-05-28 23:56:07,993 - Sent - TEST with data size 31476
+2024-05-28 23:56:07,993 - Received - TEST received with data size 31476
+2024-05-28 23:56:07,993 - Received - TEST with data size 45356
+2024-05-28 23:56:07,993 - Sent - TEST received with data size 45356
+2024-05-28 23:56:07,993 - Sent - TEST with data size 29021
+2024-05-28 23:56:07,993 - Received - TEST received with data size 29021
+2024-05-28 23:56:07,993 - Received - TEST with data size 15489
+2024-05-28 23:56:07,993 - Sent - TEST received with data size 15489
+2024-05-28 23:56:07,993 - Sent - TEST with data size 29571
+2024-05-28 23:56:07,993 - Received - TEST received with data size 29571
+2024-05-28 23:56:07,993 - Received - TEST with data size 3915
+2024-05-28 23:56:07,993 - Sent - TEST received with data size 3915
+2024-05-28 23:56:07,993 - Sent - TEST with data size 31618
+2024-05-28 23:56:07,993 - Received - TEST received with data size 31618
+2024-05-28 23:56:07,993 - Received - TEST with data size 39454
+2024-05-28 23:56:07,993 - Sent - TEST received with data size 39454
+2024-05-28 23:56:07,993 - Result - Total messages: 10
+2024-05-28 23:56:07,993 - Result - Total time: 0.002276 seconds
+2024-05-28 23:56:07,993 - Result - Average message size: 26271.50 bytes
+2024-05-28 23:56:07,993 - Result - Average time per message: 0.000228 seconds
+2024-05-28 23:56:07,993 - Result - Min message size: 1899 bytes
+2024-05-28 23:56:07,993 - Result - Max message size: 45356 bytes
