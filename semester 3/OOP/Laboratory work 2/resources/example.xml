@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scientists>
+    <Scientist>
+        <Name>Albert Einstein</Name>
+        <Faculty>
+            <Department>Physics</Department>
+            <Branch>Theoretical Physics</Branch>
+        </Faculty>
+        <ScientificDegree>Doctor of Physics</ScientificDegree>
+        <TeachingFromDates>1909-1955</TeachingFromDates>
+    </Scientist>
+    <Scientist>
+        <Name>Marie Curie</Name>
+        <Faculty>
+            <Department>Chemistry</Department>
+            <Branch>Radioactivity</Branch>
+        </Faculty>
+        <ScientificDegree>Doctor of Science</ScientificDegree>
+        <TeachingFromDates>1906-1934</TeachingFromDates>
+    </Scientist>
+</Scientists>
