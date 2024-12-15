@@ -3,9 +3,7 @@ from parsers.parser_interface import ParserStrategy
 
 
 class SAXHandler(xml.sax.ContentHandler):
-    """
-    Custom SAX handler to parse scientist data.
-    """
+    """Custom SAX handler to parse scientist data."""
     def __init__(self):
         self.current_element = ""
         self.current_scientist = {}
@@ -42,9 +40,7 @@ class SAXHandler(xml.sax.ContentHandler):
 
 
 class SAXParser(ParserStrategy):
-    """
-    SAX-based XML parser implementation.
-    """
+    """SAX-based XML parser implementation."""
 
 
     def parse(self, file_path):
@@ -54,9 +50,7 @@ class SAXParser(ParserStrategy):
 
 
     def search(self, data, criteria):
-        """
-        Search through the data using the given criteria.
-        """
+        """Search through the data using the given criteria."""
         filtered = []
         for scientist in data:
             match = True

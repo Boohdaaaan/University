@@ -3,9 +3,7 @@ from parsers.parser_interface import ParserStrategy
 
 
 class DOMParser(ParserStrategy):
-    """
-    DOM-based XML parser implementation.
-    """
+    """DOM-based XML parser implementation."""
 
     def parse(self, file_path):
         dom = xml.dom.minidom.parse(file_path)

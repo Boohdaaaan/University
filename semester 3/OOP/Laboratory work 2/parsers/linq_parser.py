@@ -3,9 +3,7 @@ from parsers.parser_interface import ParserStrategy
 
 
 class LINQParser(ParserStrategy):
-    """
-    LINQ-like XML parser implementation using ElementTree with queries.
-    """
+    """LINQ-like XML parser implementation using ElementTree with queries."""
 
     def parse(self, file_path):
         tree = ET.parse(file_path)
