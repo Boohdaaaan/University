@@ -1,116 +1,109 @@
+// variant 3
+
 #include <iostream>
 #include <thread>
-#include <barrier>
 #include <syncstream>
+#include <latch>
+#include <barrier>
 #include <vector>
-#include <semaphore>
+#include <chrono>
 
 using namespace std;
 
-// Function to simulate computation
-void f(char set, int action) {
-    osyncstream(cout) << "From set " << set << " action " << action << " completed." << endl;
+// заглушка. і-а дія з набору
+void f(char set, int i) {
+    osyncstream(cout) << "З набору " << set << " виконано дію '" << i << endl;
+    this_thread::sleep_for(chrono::milliseconds(100));
 }
 
-class ComputationGraph {
-private:
-    vector<thread> threads;
-    binary_semaphore thread_semaphore{7};  // Limit to nt=7 threads
-    
-    // Barriers for synchronization between stages
-    barrier a_sync{7};  // 7 actions
-    barrier b_sync{8};  // 8 actions
-    barrier c_sync{8};  // 8 actions
-    barrier d_sync{9};  // 9 actions
-    barrier e_sync{8};  // 8 actions
-    barrier f_sync{6};  // 6 actions
-    barrier g_sync{5};  // 5 actions
-    barrier h_sync{4};  // 4 actions
-    barrier i_sync{8};  // 8 actions
-    barrier j_sync{8};  // 8 actions
-
-    void execute_action(char set, int action, barrier& sync) {
-        thread_semaphore.acquire();
-        threads.emplace_back([&, set, action] {
-            f(set, action);
-            sync.arrive_and_wait();
-            thread_semaphore.release();
-        });
+// Виконати повний набір дій
+void execute_set(char set, int start, int count, latch& l) {
+    for (int i = start; i < start + count; ++i) {
+        f(set, i);
     }
-
-    void execute_set(char set, int count, barrier& sync) {
-        for(int i = 1; i <= count; ++i) {
-            execute_action(set, i, sync);
-        }
-    }
-
-public:
-    void run() {
-        osyncstream(cout) << "Computation started." << endl;
-
-        // Stage 1: Set 'a' (no dependencies)
-        execute_set('a', 7, a_sync);
-        
-        // Wait for 'a' to complete before starting its dependents
-        for(auto& t : threads) {
-            if(t.joinable()) t.join();
-        }
-        threads.clear();
-
-        // Stage 2: Sets 'b', 'c', 'd' (depend on 'a')
-        execute_set('b', 8, b_sync);
-        execute_set('c', 8, c_sync);
-        execute_set('d', 9, d_sync);
-        
-        // Wait for 'b', 'c', 'd' to complete
-        for(auto& t : threads) {
-            if(t.joinable()) t.join();
-        }
-        threads.clear();
-
-        // Stage 3: Sets 'e', 'f', 'g' (depend on 'c', 'b', 'd' respectively)
-        execute_set('e', 8, e_sync);
-        execute_set('f', 6, f_sync);
-        execute_set('g', 5, g_sync);
-        
-        // Wait for 'e', 'f', 'g' to complete
-        for(auto& t : threads) {
-            if(t.joinable()) t.join();
-        }
-        threads.clear();
-
-        // Stage 4: Set 'h' (depends on 'g')
-        execute_set('h', 4, h_sync);
-        
-        // Wait for 'h' to complete
-        for(auto& t : threads) {
-            if(t.joinable()) t.join();
-        }
-        threads.clear();
-
-        // Stage 5: Set 'i' (depends on 'e' and 'f')
-        execute_set('i', 8, i_sync);
-        
-        // Wait for 'i' to complete
-        for(auto& t : threads) {
-            if(t.joinable()) t.join();
-        }
-        threads.clear();
-
-        // Stage 6: Set 'j' (depends on 'h' and 'i')
-        execute_set('j', 8, j_sync);
-        
-        // Wait for all remaining threads
-        for(auto& t : threads) {
-            if(t.joinable()) t.join();
-        }
-
-        osyncstream(cout) << "Computation completed." << endl;
-    }
-};
+    l.count_down();
+}
 
 int main() {
-    ComputationGraph graph;
-    graph.run();
+    setlocale(LC_ALL, "ukrainian");
+
+    const int nt = 7; // кількість потоків
+
+    // Latches для синхронізації
+    latch a_done(1);     // 7
+    latch b_done(1);     // 8
+    latch c_done(1);     // 8
+    latch d_done(1);     // 9
+    latch e_done(1);     // 8
+    latch f_done(1);     // 6
+    latch g_done(1);     // 5
+    latch h_done(1);     // 4
+    latch i_done(1);     // 8
+    latch j_done(1);     // 8 
+
+    osyncstream(cout) << "Обчислення розпочато." << endl;
+
+    vector<jthread> threads;
+
+    // Виконуємо 'a'
+    threads.emplace_back([&]() {
+        execute_set('a', 1, 7, a_done);
+    });
+
+    // Чекаємо завершення 'a'
+    a_done.wait();
+
+    // Виконуємо паралельно 'b', 'c', 'd'
+    threads.emplace_back([&]() {
+        execute_set('b', 1, 8, b_done);
+    });
+    threads.emplace_back([&]() {
+        execute_set('c', 1, 8, c_done);
+    });
+    threads.emplace_back([&]() {
+        execute_set('d', 1, 9, d_done);
+    });
+
+    // Чекаємо завершення 'b', щоб почати 'e'
+    b_done.wait();
+    threads.emplace_back([&]() {
+        execute_set('e', 1, 8, e_done);
+    });
+
+    // Чекаємо завершення 'c', щоб почати 'f', 'g'
+    c_done.wait();
+    threads.emplace_back([&]() {
+        execute_set('f', 1, 6, f_done);
+    });
+    threads.emplace_back([&]() {
+        execute_set('g', 1, 5, g_done);
+    });
+
+    // Чекаємо завершення 'd', щоб почати 'h'
+    d_done.wait();
+    threads.emplace_back([&]() {
+        execute_set('h', 1, 4, h_done);
+    });
+
+    // Чекаємо завершення 'e', 'f', щоб почати 'i'
+    e_done.wait();
+    f_done.wait();
+    threads.emplace_back([&]() {
+        execute_set('i', 1, 8, i_done);
+    });
+
+    // Чекаємо завершення 'g', 'h', щоб почати 'j'
+    g_done.wait();
+    h_done.wait();
+    threads.emplace_back([&]() {
+        execute_set('j', 1, 8, j_done);
+    });
+
+    // Чекаємо завершення 'i', 'j'
+    i_done.wait();
+    j_done.wait();
+
+    osyncstream(cout) << "Обчислення завершено." << endl;
+
     return 0;
 }
