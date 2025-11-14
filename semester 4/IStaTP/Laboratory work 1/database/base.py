@@ -1,31 +1,29 @@
-from datetime import UTC, datetime
-from uuid import UUID, uuid4
-
-from sqlalchemy import func
-from sqlalchemy.ext.asyncio import AsyncAttrs
-from sqlalchemy.orm import (
-    DeclarativeBase,
-    Mapped,
-    MappedAsDataclass,
-    mapped_column,
-)
+from datetime import datetime
+from uuid import UUID
+from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
+from sqlalchemy.sql import func
 
 
-class Base(AsyncAttrs, MappedAsDataclass, DeclarativeBase):
+class Base(DeclarativeBase):
     pass
 
 
 class BaseEntity(Base):
     __abstract__ = True
 
-    id: Mapped[UUID] = mapped_column(init=False, primary_key=True, default_factory=uuid4)
-    created_at: Mapped[datetime] = mapped_column(
-        init=False,
-        default_factory=lambda: datetime.now(UTC),
-        insert_default=func.now(),
+    id: Mapped[UUID] = mapped_column(primary_key=True, server_default=func.gen_random_uuid())
+    created_at: Mapped[datetime] = mapped_column(server_default=func.current_timestamp())
+    updated_at: Mapped[datetime] = mapped_column(
+        server_default=func.current_timestamp(),
+        onupdate=func.current_timestamp()
     )
-    updated_at: Mapped[datetime | None] = mapped_column(init=False, default=None, onupdate=func.now())
 
 
-class BaseAssociativeEntity(BaseEntity):
+class BaseAssociativeEntity(Base):
     __abstract__ = True
+
+    created_at: Mapped[datetime] = mapped_column(server_default=func.current_timestamp())
+    updated_at: Mapped[datetime] = mapped_column(
+        server_default=func.current_timestamp(),
+        onupdate=func.current_timestamp()
+    )

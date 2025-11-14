@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Audit log (view_audit_log_recent)</h2>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Entity</th>
+      <th>Entity ID</th>
+      <th>Action</th>
+      <th>User</th>
+      <th>Timestamp</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for r in rows %}
+    <tr>
+      <td>{{ r.id }}</td>
+      <td>{{ r.entity_name }}</td>
+      <td>{{ r.entity_id }}</td>
+      <td>{{ r.action }}</td>
+      <td>{{ r.user_email }}</td>
+      <td>{{ r.timestamp }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+  {% if rows|length == 0 %}
+  <caption>Немає записів аудиту.</caption>
+  {% endif %}
+</table>
+{% endblock %}
+
+

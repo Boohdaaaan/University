@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Зведення по користувачах (view_user_summary)</h2>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Email</th>
+      <th>Role</th>
+      <th>Projects</th>
+      <th>Contracts (as client)</th>
+      <th>Reviews received</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for r in rows %}
+    <tr>
+      <td>{{ r.id }}</td>
+      <td>{{ r.email }}</td>
+      <td>{{ r.role }}</td>
+      <td>{{ r.project_count }}</td>
+      <td>{{ r.contracts_as_client }}</td>
+      <td>{{ r.reviews_received }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+  {% if rows|length == 0 %}
+  <caption>Немає даних.</caption>
+  {% endif %}
+</table>
+{% endblock %}
+
+

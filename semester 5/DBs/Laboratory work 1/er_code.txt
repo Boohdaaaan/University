@@ -1,0 +1,177 @@
+Table users {
+  id int [pk, increment]
+  email varchar(255) [unique, not null]
+  password_hash varchar(255) [not null]
+  role varchar(50)
+  is_deleted boolean [default: false]
+  created_at timestamp [default: `now()`]
+  updated_at timestamp
+  updated_by int
+}
+
+Table profiles {
+  id int [pk, increment]
+  user_id int
+  display_name varchar(255)
+  bio text
+  location varchar(100)
+  avatar_url varchar(255)
+}
+
+Table skills {
+  id int [pk, increment]
+  name varchar(100) [unique, not null]
+}
+
+Table user_skills {
+  user_id int
+  skill_id int
+  indexes {
+    (user_id, skill_id) [pk]
+  }
+}
+
+Table categories {
+  id int [pk, increment]
+  name varchar(100) [not null]
+  parent_id int
+}
+
+Table projects {
+  id int [pk, increment]
+  client_id int
+  category_id int
+  title varchar(255)
+  description text
+  budget numeric(12,2)
+  status varchar(50) [default: 'open']
+  is_deleted boolean [default: false]
+  created_at timestamp [default: `now()`]
+  updated_at timestamp
+  updated_by int
+}
+
+Table bids {
+  id int [pk, increment]
+  project_id int
+  freelancer_id int
+  proposal_text text
+  bid_amount numeric(12,2)
+  status varchar(50) [default: 'pending']
+  created_at timestamp [default: `now()`]
+}
+
+Table contracts {
+  id int [pk, increment]
+  project_id int
+  client_id int
+  freelancer_id int
+  start_date date
+  end_date date
+  status varchar(50) [default: 'active']
+  is_deleted boolean [default: false]
+}
+
+Table tasks {
+  id int [pk, increment]
+  contract_id int
+  title varchar(255)
+  status varchar(50) [default: 'todo']
+  deadline date
+  updated_at timestamp
+  updated_by int
+}
+
+Table payments {
+  id int [pk, increment]
+  contract_id int
+  amount numeric(12,2)
+  payment_date date
+  method varchar(50)
+  status varchar(50) [default: 'pending']
+}
+
+Table reviews {
+  id int [pk, increment]
+  contract_id int
+  author_id int
+  target_id int
+  rating int
+  comment text
+  created_at timestamp [default: `now()`]
+}
+
+Table chats {
+  id int [pk, increment]
+  title varchar(255)
+  created_at timestamp [default: `now()`]
+}
+
+Table chat_members {
+  chat_id int
+  user_id int
+  indexes {
+    (chat_id, user_id) [pk]
+  }
+}
+
+Table messages {
+  id int [pk, increment]
+  chat_id int
+  sender_id int
+  text text
+  created_at timestamp [default: `now()`]
+  is_deleted boolean [default: false]
+}
+
+Table notifications {
+  id int [pk, increment]
+  user_id int
+  type varchar(50)
+  message text
+  is_read boolean [default: false]
+  created_at timestamp [default: `now()`]
+}
+
+Table attachments {
+  id int [pk, increment]
+  file_path varchar(255)
+  entity_type varchar(50)
+  entity_id int
+  uploaded_at timestamp [default: `now()`]
+  uploaded_by int
+}
+
+Table audit_log {
+  id int [pk, increment]
+  user_id int
+  entity_name varchar(100)
+  entity_id int
+  action varchar(50)
+  timestamp timestamp [default: `now()`]
+}
+
+Ref: profiles.user_id > users.id
+Ref: user_skills.user_id > users.id
+Ref: user_skills.skill_id > skills.id
+Ref: categories.parent_id > categories.id
+Ref: projects.client_id > users.id
+Ref: projects.category_id > categories.id
+Ref: bids.project_id > projects.id
+Ref: bids.freelancer_id > users.id
+Ref: contracts.project_id > projects.id
+Ref: contracts.client_id > users.id
+Ref: contracts.freelancer_id > users.id
+Ref: tasks.contract_id > contracts.id
+Ref: tasks.updated_by > users.id
+Ref: payments.contract_id > contracts.id
+Ref: reviews.contract_id > contracts.id
+Ref: reviews.author_id > users.id
+Ref: reviews.target_id > users.id
+Ref: chat_members.chat_id > chats.id
+Ref: chat_members.user_id > users.id
+Ref: messages.chat_id > chats.id
+Ref: messages.sender_id > users.id
+Ref: notifications.user_id > users.id
+Ref: attachments.uploaded_by > users.id
+Ref: audit_log.user_id > users.id

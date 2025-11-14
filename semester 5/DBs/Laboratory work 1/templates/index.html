@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Демонстрація Лабораторної роботи (БД)</h1>
+
+<section>
+  <h2>Користувачі</h2>
+  <form method="post" action="/users/create" class="card">
+    <label>Email <input type="email" name="email" required></label>
+    <label>Password <input type="text" name="password" required></label>
+    <label>Role
+      <select name="role">
+        <option value="client">client</option>
+        <option value="freelancer">freelancer</option>
+        <option value="admin">admin</option>
+      </select>
+    </label>
+    <button type="submit">Створити користувача (stored function)</button>
+  </form>
+
+  <form method="post" action="/users/delete" class="card">
+    <label>User ID <input type="number" name="user_id" required></label>
+    <label>Actor ID <input type="number" name="actor_id" required></label>
+    <button type="submit">Soft delete (procedure + trigger)</button>
+  </form>
+
+  <a class="btn" href="/users/summary">Переглянути зведення (view_user_summary)</a>
+</section>
+
+<section>
+  <h2>Проєкти</h2>
+  <form method="post" action="/projects/create" class="card">
+    <label>Client ID <input type="number" name="client_id" required></label>
+    <label>Category ID <input type="number" name="category_id"></label>
+    <label>Title <input type="text" name="title" required></label>
+    <label>Description <input type="text" name="description"></label>
+    <label>Budget <input type="number" step="0.01" name="budget"></label>
+    <label>Actor ID <input type="number" name="actor_id" required></label>
+    <button type="submit">Створити проєкт (procedure)</button>
+  </form>
+
+  <form method="post" action="/projects/status" class="card">
+    <label>Project ID <input type="number" name="project_id" required></label>
+    <label>Status
+      <select name="status">
+        <option value="open">open</option>
+        <option value="in_progress">in_progress</option>
+        <option value="completed">completed</option>
+        <option value="cancelled">cancelled</option>
+      </select>
+    </label>
+    <label>Actor ID <input type="number" name="actor_id" required></label>
+    <button type="submit">Оновити статус (procedure)</button>
+  </form>
+
+  <a class="btn" href="/projects/active">Переглянути активні (view_active_projects)</a>
+</section>
+
+<section>
+  <h2>Контракти</h2>
+  <form method="post" action="/contracts/accept_bid" class="card">
+    <label>Bid ID <input type="number" name="bid_id" required></label>
+    <button type="submit">Погодити ставку і створити контракт (procedure)</button>
+  </form>
+
+  <form method="post" action="/contracts/add_payment" class="card">
+    <label>Contract ID <input type="number" name="contract_id" required></label>
+    <label>Amount <input type="number" step="0.01" name="amount" required></label>
+    <label>Method <input type="text" name="method" value="card"></label>
+    <button type="submit">Додати платіж (procedure)</button>
+  </form>
+
+  <a class="btn" href="/contracts">Переглянути контракти (view_contracts_with_payments)</a>
+</section>
+{% endblock %}
+
+
