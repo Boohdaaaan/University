@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Порівняння швидкості MongoDB vs PostgreSQL</h1>
+
+<section>
+  <h2>Налаштування тесту</h2>
+  <form method="get" action="/portfolios/compare" class="card">
+    <label>Freelancer ID <input type="number" name="freelancer_id" value="{{ freelancer_id }}" required></label>
+    <label>Category <input type="text" name="category" value="{{ category or '' }}"></label>
+    <label>Кількість ітерацій <input type="number" name="iterations" value="{{ iterations }}" min="1" max="10000"></label>
+    <button type="submit">Запустити тест</button>
+  </form>
+</section>
+
+{% if mongo_avg %}
+<section>
+  <h2>Результати тесту</h2>
+  <div class="card">
+    <h3>Параметри тесту:</h3>
+    <ul>
+      <li>Freelancer ID: {{ freelancer_id }}</li>
+      <li>Category: {{ category or 'Всі категорії' }}</li>
+      <li>Ітерацій: {{ iterations }}</li>
+    </ul>
+
+    <h3>Середній час виконання запиту:</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>База даних</th>
+          <th>Середній час (мс)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>MongoDB</strong></td>
+          <td>{{ "%.2f"|format(mongo_avg) }} мс</td>
+        </tr>
+        <tr>
+          <td><strong>PostgreSQL</strong></td>
+          <td>{{ "%.2f"|format(pg_avg) }} мс</td>
+        </tr>
+      </tbody>
+    </table>
+
+    {% if mongo_avg < pg_avg %}
+    <p style="color: green;"><strong>MongoDB швидший на {{ "%.1f"|format((pg_avg - mongo_avg) / pg_avg * 100) }}%</strong></p>
+    {% elif pg_avg < mongo_avg %}
+    <p style="color: green;"><strong>PostgreSQL швидший на {{ "%.1f"|format((mongo_avg - pg_avg) / mongo_avg * 100) }}%</strong></p>
+    {% else %}
+    <p style="color: blue;"><strong>Швидкість приблизно однакова</strong></p>
+    {% endif %}
+  </div>
+</section>
+{% endif %}
+
+<section>
+  <h2>Навігація</h2>
+  <a class="btn" href="/portfolios/mongo/list">Портфоліо MongoDB</a>
+  <a class="btn" href="/portfolios/pg/list">Портфоліо PostgreSQL</a>
+</section>
+{% endblock %}
+

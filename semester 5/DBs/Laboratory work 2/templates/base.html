@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DBs Lab 1</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="/">Головна</a>
+      <a href="/users/summary">Користувачі</a>
+      <a href="/projects/active">Проєкти</a>
+      <a href="/contracts">Контракти</a>
+      <a href="/portfolios/mongo/list">Портфоліо (MongoDB)</a>
+      <a href="/portfolios/pg/list">Портфоліо (PostgreSQL)</a>
+      <a href="/portfolios/compare">Порівняння</a>
+      <a href="/messages/mongo/list?chat_id=1">Повідомлення</a>
+      <a href="/redis">Redis</a>
+      <a href="/audit">Аудит</a>
+    </nav>
+  </header>
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>
+
+

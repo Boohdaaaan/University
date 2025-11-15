@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Redis (Key-Value Store)</h1>
+
+<section>
+  <h2>Базові операції</h2>
+  
+  <div class="card">
+    <h3>Set (встановити значення)</h3>
+    <form method="post" action="/redis/set">
+      <label>Key <input type="text" name="key" required placeholder="user:1:name"></label>
+      <label>Value <input type="text" name="value" required placeholder="John Doe"></label>
+      <label>TTL (секунди, опціонально) <input type="number" name="ttl" min="1" placeholder="3600"></label>
+      <button type="submit">Set</button>
+    </form>
+  </div>
+
+  <div class="card">
+    <h3>Get (отримати значення)</h3>
+    <form method="get" action="/redis/get">
+      <label>Key <input type="text" name="key" required placeholder="user:1:name" value="{{ request.query_params.get('key', '') }}"></label>
+      <button type="submit">Get</button>
+    </form>
+    {% if get_result is not none %}
+    <div style="margin-top: 10px; padding: 10px; background: rgba(17,24,39,.9); border: 1px solid rgba(255,255,255,.1); border-radius: 4px; color: var(--text);">
+      {% if get_result %}
+      <strong>Результат:</strong> {{ get_result }}
+      {% else %}
+      <strong>Результат:</strong> <em>Ключ не знайдено або значення порожнє</em>
+      {% endif %}
+    </div>
+    {% endif %}
+  </div>
+
+  <div class="card">
+    <h3>Delete (видалити ключ)</h3>
+    <form method="post" action="/redis/delete">
+      <label>Key <input type="text" name="key" required></label>
+      <button type="submit">Delete</button>
+    </form>
+  </div>
+</section>
+
+<section>
+  <h2>Hash (об'єкт)</h2>
+  
+  <div class="card">
+    <h3>Set Hash</h3>
+    <form method="post" action="/redis/set-hash">
+      <label>Key <input type="text" name="key" required placeholder="user:1"></label>
+      <label>JSON (об'єкт) <textarea name="json_data" rows="4" required placeholder='{"name": "John", "email": "john@example.com", "role": "freelancer"}'></textarea></label>
+      <button type="submit">Set Hash</button>
+    </form>
+  </div>
+
+  <div class="card">
+    <h3>Get Hash</h3>
+    <form method="get" action="/redis/get-hash">
+      <label>Key <input type="text" name="key" required placeholder="user:1" value="{{ request.query_params.get('key', '') }}"></label>
+      <button type="submit">Get Hash</button>
+    </form>
+    {% if hash_result is not none %}
+    <div style="margin-top: 10px; padding: 10px; background: rgba(17,24,39,.9); border: 1px solid rgba(255,255,255,.1); border-radius: 4px; color: var(--text);">
+      {% if hash_result %}
+      <strong>Результат:</strong>
+      <pre style="color: var(--text);">{{ hash_result }}</pre>
+      {% else %}
+      <strong>Результат:</strong> <em>Hash не знайдено</em>
+      {% endif %}
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+<section>
+  <h2>List (список)</h2>
+  
+  <div class="card">
+    <h3>Set List</h3>
+    <form method="post" action="/redis/set-list">
+      <label>Key <input type="text" name="key" required placeholder="messages:chat:1"></label>
+      <label>Values (один на рядок) <textarea name="values" rows="4" required placeholder="Hello&#10;World&#10;Test"></textarea></label>
+      <button type="submit">Set List</button>
+    </form>
+  </div>
+
+  <div class="card">
+    <h3>Get List</h3>
+    <form method="get" action="/redis/get-list">
+      <label>Key <input type="text" name="key" required placeholder="messages:chat:1" value="{{ request.query_params.get('key', '') }}"></label>
+      <button type="submit">Get List</button>
+    </form>
+    {% if list_result is not none %}
+    <div style="margin-top: 10px; padding: 10px; background: rgba(17,24,39,.9); border: 1px solid rgba(255,255,255,.1); border-radius: 4px; color: var(--text);">
+      {% if list_result %}
+      <strong>Результат:</strong>
+      <ul>
+        {% for item in list_result %}
+        <li>{{ item }}</li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <strong>Результат:</strong> <em>Список не знайдено або порожній</em>
+      {% endif %}
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+<section>
+  <h2>Всі ключі</h2>
+  <form method="get" action="/redis/keys">
+    <label>Pattern <input type="text" name="pattern" value="{{ request.query_params.get('pattern', '*') }}" placeholder="user:*"></label>
+    <button type="submit">Показати ключі</button>
+  </form>
+  
+  {% if keys is not none %}
+  <div style="margin-top: 10px; padding: 10px; background: rgba(17,24,39,.9); border: 1px solid rgba(255,255,255,.1); border-radius: 4px; color: var(--text);">
+    {% if keys %}
+    <strong>Знайдено ключів: {{ keys|length }}</strong>
+    <ul>
+      {% for key in keys %}
+      <li>{{ key }}</li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <strong>Ключі не знайдено</strong>
+    {% endif %}
+  </div>
+  {% endif %}
+</section>
+{% endblock %}
+

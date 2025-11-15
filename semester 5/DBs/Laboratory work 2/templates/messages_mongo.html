@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Повідомлення (MongoDB)</h1>
+
+<section>
+  <h2>Створити повідомлення</h2>
+  <form method="post" action="/messages/mongo/create" class="card">
+    <label>Chat ID <input type="number" name="chat_id" required></label>
+    <label>Sender ID <input type="number" name="sender_id" required></label>
+    <label>Text <textarea name="text" rows="3" required></textarea></label>
+    <label>Reactions (JSON, опціонально) <textarea name="reactions" rows="2" placeholder='{"👍": [1, 2], "❤️": [3]}'></textarea></label>
+    <label>Attachments (один URL на рядок) <textarea name="attachments" rows="2" placeholder="https://example.com/file1.pdf"></textarea></label>
+    <button type="submit">Створити повідомлення (MongoDB)</button>
+  </form>
+</section>
+
+<section>
+  <h2>Список повідомлень</h2>
+  <form method="get" action="/messages/mongo/list" class="card">
+    <label>Chat ID <input type="number" name="chat_id" required></label>
+    <label>Limit <input type="number" name="limit" value="50" min="1" max="200"></label>
+    <label>Skip <input type="number" name="skip" value="0" min="0"></label>
+    <button type="submit">Показати повідомлення</button>
+  </form>
+
+  {% if rows %}
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Chat ID</th>
+        <th>Sender ID</th>
+        <th>Text</th>
+        <th>Reactions</th>
+        <th>Attachments</th>
+        <th>Created At</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in rows %}
+      <tr>
+        <td>{{ row._id }}</td>
+        <td>{{ row.chat_id }}</td>
+        <td>{{ row.sender_id }}</td>
+        <td>{{ row.text or '' }}</td>
+        <td>
+          {% if row.reactions %}
+            {% for reaction, users in row.reactions.items() %}
+              {{ reaction }}: {{ users|length }}
+            {% endfor %}
+          {% else %}
+            -
+          {% endif %}
+        </td>
+        <td>
+          {% if row.attachments %}
+            {{ row.attachments|length }} файл(ів)
+          {% else %}
+            -
+          {% endif %}
+        </td>
+        <td>{{ row.created_at }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p>Немає повідомлень</p>
+  {% endif %}
+</section>
+{% endblock %}
+

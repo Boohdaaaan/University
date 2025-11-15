@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Контракти (view_contracts_with_payments)</h2>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Project</th>
+      <th>Client</th>
+      <th>Freelancer</th>
+      <th>Status</th>
+      <th>Total Paid</th>
+      <th>Payments</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for r in rows %}
+    <tr>
+      <td>{{ r.contract_id }}</td>
+      <td>{{ r.project_id }}</td>
+      <td>{{ r.client_id }}</td>
+      <td>{{ r.freelancer_id }}</td>
+      <td>{{ r.status }}</td>
+      <td>{{ r.total_paid }}</td>
+      <td>{{ r.payments_count }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+  {% if rows|length == 0 %}
+  <caption>Немає контрактів.</caption>
+  {% endif %}
+</table>
+{% endblock %}
+
+

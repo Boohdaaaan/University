@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Портфоліо (MongoDB)</h1>
+
+<section>
+  <h2>Створити портфоліо</h2>
+  <form method="post" action="/portfolios/mongo/create" class="card">
+    <label>Freelancer ID <input type="number" name="freelancer_id" required></label>
+    <label>Title <input type="text" name="title" required></label>
+    <label>Description <textarea name="description" rows="3"></textarea></label>
+    <label>Category <input type="text" name="category" placeholder="Наприклад: Веб-розробка"></label>
+    <label>URL <input type="url" name="url" placeholder="https://example.com"></label>
+    <label>Images (один URL на рядок) <textarea name="images" rows="3" placeholder="https://example.com/image1.jpg&#10;https://example.com/image2.jpg"></textarea></label>
+    <label>Tags (через кому) <input type="text" name="tags" placeholder="React, Node.js, PostgreSQL"></label>
+    <label>Extra Data (JSON) <textarea name="extra_data" rows="4" placeholder='{"duration_months": 3, "team_size": 2}'></textarea></label>
+    <button type="submit">Створити портфоліо (MongoDB)</button>
+  </form>
+</section>
+
+<section>
+  <h2>Список портфоліо</h2>
+  <form method="get" action="/portfolios/mongo/list" class="card">
+    <label>Freelancer ID <input type="number" name="freelancer_id"></label>
+    <label>Category <input type="text" name="category"></label>
+    <button type="submit">Показати портфоліо</button>
+  </form>
+
+  {% if rows %}
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Freelancer ID</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Category</th>
+        <th>Created At</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in rows %}
+      <tr>
+        <td>{{ row._id }}</td>
+        <td>{{ row.freelancer_id }}</td>
+        <td>{{ row.title }}</td>
+        <td>{{ row.description or '' }}</td>
+        <td>{{ row.category or '' }}</td>
+        <td>{{ row.created_at }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p>Немає портфоліо</p>
+  {% endif %}
+</section>
+{% endblock %}
+
