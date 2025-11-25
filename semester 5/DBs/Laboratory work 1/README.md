@@ -1,4 +1,4 @@
-Лабороторная Робота #1
+Лабороторна Робота #1
 студента Кузнецова Богдана ТК-31
 
 1. Було розроблено схему бази даних відповідно до вимог варіанту лабороторної роботи. ER діа
@@ -39,7 +39,7 @@ ER діаграма: [ER.pdf](ER.pdf)
 - BTREE (композитний, частковий): `idx_projects_active_status_created_at` на `projects(status, created_at DESC)` WHERE `is_deleted=FALSE AND status IN ('open','in_progress') - список активних проєктів із сортуванням по даті.
 - BTREE (композитний): `idx_projects_client_title_created_at` на `projects(client_id, title, created_at DESC)` — швидке отримання щойно створеного проєкту у fallback-запиті.
 - BTREE (одноколонкові): `idx_projects_client_id`, `idx_contracts_client_id`, `idx_reviews_target_id`, `idx_payments_contract_id` — швидкі джойни/агрегації.
-- BTREE: `idx_audit_log_timestamp` на `audit_log(timestamp DESC)` — швидкий вивід останніх подій у /audit`.
+- BTREE: `idx_audit_log_timestamp` на `audit_log(timestamp DESC)` — швидкий вивід останніх подій у /audit.
 - GIN (pg_trgm): `idx_users_email_trgm` на `users(email)` — швидкий пошук email по підрядку (`LIKE/ILIKE`).
 - BRIN: `idx_audit_log_timestamp_brin` на `audit_log(timestamp)` — ефективні діапазонні скани для великого журналу.
 

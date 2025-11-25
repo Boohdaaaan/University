@@ -3,7 +3,6 @@ from __future__ import annotations
 from typing import Any
 
 from sqlalchemy import text
-from sqlalchemy.ext.asyncio import AsyncSession
 
 from .base import BaseRepository
 
@@ -22,5 +21,3 @@ class AuditRepository(BaseRepository):
             {"limit": limit},
         )
         return [dict(r) for r in result.mappings().all()]
-
-
