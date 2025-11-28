@@ -1,0 +1,137 @@
+
+matrix_O1:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000100003d84 <__Z11fill_matrixPii>:
+100003d84: 34000301    	cbz	w1, 0x100003de4 <__Z11fill_matrixPii+0x60>
+100003d88: a9bd57f6    	stp	x22, x21, [sp, #-0x30]!
+100003d8c: a9014ff4    	stp	x20, x19, [sp, #0x10]
+100003d90: a9027bfd    	stp	x29, x30, [sp, #0x20]
+100003d94: 910083fd    	add	x29, sp, #0x20
+100003d98: aa0003f3    	mov	x19, x0
+100003d9c: 1b017c28    	mul	w8, w1, w1
+100003da0: 7100051f    	cmp	w8, #0x1
+100003da4: 1a9f8514    	csinc	w20, w8, wzr, hi
+100003da8: 528cccf5    	mov	w21, #0x6667            ; =26215
+100003dac: 72acccd5    	movk	w21, #0x6666, lsl #16
+100003db0: 52800156    	mov	w22, #0xa               ; =10
+100003db4: 94000061    	bl	0x100003f38 <_time+0x100003f38>
+100003db8: 9b357c08    	smull	x8, w0, w21
+100003dbc: d37ffd09    	lsr	x9, x8, #63
+100003dc0: 9362fd08    	asr	x8, x8, #34
+100003dc4: 0b090108    	add	w8, w8, w9
+100003dc8: 1b168108    	msub	w8, w8, w22, w0
+100003dcc: b8004668    	str	w8, [x19], #0x4
+100003dd0: f1000694    	subs	x20, x20, #0x1
+100003dd4: 54ffff01    	b.ne	0x100003db4 <__Z11fill_matrixPii+0x30>
+100003dd8: a9427bfd    	ldp	x29, x30, [sp, #0x20]
+100003ddc: a9414ff4    	ldp	x20, x19, [sp, #0x10]
+100003de0: a8c357f6    	ldp	x22, x21, [sp], #0x30
+100003de4: d65f03c0    	ret
+
+0000000100003de8 <__Z15multiply_matrixPiS_S_i>:
+100003de8: 7100047f    	cmp	w3, #0x1
+100003dec: 5400038b    	b.lt	0x100003e5c <__Z15multiply_matrixPiS_S_i+0x74>
+100003df0: d2800008    	mov	x8, #0x0                ; =0
+100003df4: 93407c69    	sxtw	x9, w3
+100003df8: 937e7c6a    	sbfiz	x10, x3, #2, #32
+100003dfc: 2a0303eb    	mov	w11, w3
+100003e00: d280000c    	mov	x12, #0x0               ; =0
+100003e04: 9b097d0d    	mul	x13, x8, x9
+100003e08: aa0103ee    	mov	x14, x1
+100003e0c: 5280000f    	mov	w15, #0x0               ; =0
+100003e10: aa0b03f0    	mov	x16, x11
+100003e14: aa0003f1    	mov	x17, x0
+100003e18: aa0e03e3    	mov	x3, x14
+100003e1c: b8404624    	ldr	w4, [x17], #0x4
+100003e20: b9400065    	ldr	w5, [x3]
+100003e24: 1b043caf    	madd	w15, w5, w4, w15
+100003e28: 8b0a0063    	add	x3, x3, x10
+100003e2c: f1000610    	subs	x16, x16, #0x1
+100003e30: 54ffff61    	b.ne	0x100003e1c <__Z15multiply_matrixPiS_S_i+0x34>
+100003e34: 8b0d0190    	add	x16, x12, x13
+100003e38: b830784f    	str	w15, [x2, x16, lsl #2]
+100003e3c: 9100058c    	add	x12, x12, #0x1
+100003e40: 910011ce    	add	x14, x14, #0x4
+100003e44: eb0b019f    	cmp	x12, x11
+100003e48: 54fffe21    	b.ne	0x100003e0c <__Z15multiply_matrixPiS_S_i+0x24>
+100003e4c: 91000508    	add	x8, x8, #0x1
+100003e50: 8b0a0000    	add	x0, x0, x10
+100003e54: eb0b011f    	cmp	x8, x11
+100003e58: 54fffd41    	b.ne	0x100003e00 <__Z15multiply_matrixPiS_S_i+0x18>
+100003e5c: d65f03c0    	ret
+
+0000000100003e60 <__Z13recursive_sumi>:
+100003e60: aa0003e8    	mov	x8, x0
+100003e64: 52800000    	mov	w0, #0x0                ; =0
+100003e68: 71000509    	subs	w9, w8, #0x1
+100003e6c: 540000ab    	b.lt	0x100003e80 <__Z13recursive_sumi+0x20>
+100003e70: 0b080000    	add	w0, w0, w8
+100003e74: aa0903e8    	mov	x8, x9
+100003e78: 71000509    	subs	w9, w8, #0x1
+100003e7c: 54ffffaa    	b.ge	0x100003e70 <__Z13recursive_sumi+0x10>
+100003e80: d65f03c0    	ret
+
+0000000100003e84 <_main>:
+100003e84: d100c3ff    	sub	sp, sp, #0x30
+100003e88: a9014ff4    	stp	x20, x19, [sp, #0x10]
+100003e8c: a9027bfd    	stp	x29, x30, [sp, #0x20]
+100003e90: 910083fd    	add	x29, sp, #0x20
+100003e94: 529f2013    	mov	w19, #0xf900            ; =63744
+100003e98: 72a002b3    	movk	w19, #0x15, lsl #16
+100003e9c: d2800000    	mov	x0, #0x0                ; =0
+100003ea0: 9400002f    	bl	0x100003f5c <_time+0x100003f5c>
+100003ea4: 9400002b    	bl	0x100003f50 <_time+0x100003f50>
+100003ea8: 529f2014    	mov	w20, #0xf900            ; =63744
+100003eac: 72a002b4    	movk	w20, #0x15, lsl #16
+100003eb0: 94000022    	bl	0x100003f38 <_time+0x100003f38>
+100003eb4: f1000694    	subs	x20, x20, #0x1
+100003eb8: 54ffffc1    	b.ne	0x100003eb0 <_main+0x2c>
+100003ebc: 9400001f    	bl	0x100003f38 <_time+0x100003f38>
+100003ec0: f1000673    	subs	x19, x19, #0x1
+100003ec4: 54ffffc1    	b.ne	0x100003ebc <_main+0x38>
+100003ec8: 94000016    	bl	0x100003f20 <_time+0x100003f20>
+100003ecc: aa0003f3    	mov	x19, x0
+100003ed0: 52807d00    	mov	w0, #0x3e8              ; =1000
+100003ed4: 97ffffe3    	bl	0x100003e60 <__Z13recursive_sumi>
+100003ed8: 94000012    	bl	0x100003f20 <_time+0x100003f20>
+100003edc: cb130008    	sub	x8, x0, x19
+100003ee0: 9e630100    	ucvtf	d0, x8
+100003ee4: d2d09008    	mov	x8, #0x848000000000     ; =145685290680320
+100003ee8: f2e825c8    	movk	x8, #0x412e, lsl #48
+100003eec: 9e670101    	fmov	d1, x8
+100003ef0: 1e611800    	fdiv	d0, d0, d1
+100003ef4: fd0003e0    	str	d0, [sp]
+100003ef8: 90000000    	adrp	x0, 0x100003000 <_time+0x100003000>
+100003efc: 913da000    	add	x0, x0, #0xf68
+100003f00: 9400000b    	bl	0x100003f2c <_time+0x100003f2c>
+100003f04: 52800020    	mov	w0, #0x1                ; =1
+100003f08: 9400000f    	bl	0x100003f44 <_time+0x100003f44>
+100003f0c: 52800000    	mov	w0, #0x0                ; =0
+100003f10: a9427bfd    	ldp	x29, x30, [sp, #0x20]
+100003f14: a9414ff4    	ldp	x20, x19, [sp, #0x10]
+100003f18: 9100c3ff    	add	sp, sp, #0x30
+100003f1c: d65f03c0    	ret
+
+Disassembly of section __TEXT,__stubs:
+
+0000000100003f20 <__stubs>:
+100003f20: b0000010    	adrp	x16, 0x100004000 <_time+0x100004000>
+100003f24: f9400210    	ldr	x16, [x16]
+100003f28: d61f0200    	br	x16
+100003f2c: b0000010    	adrp	x16, 0x100004000 <_time+0x100004000>
+100003f30: f9400610    	ldr	x16, [x16, #0x8]
+100003f34: d61f0200    	br	x16
+100003f38: b0000010    	adrp	x16, 0x100004000 <_time+0x100004000>
+100003f3c: f9400a10    	ldr	x16, [x16, #0x10]
+100003f40: d61f0200    	br	x16
+100003f44: b0000010    	adrp	x16, 0x100004000 <_time+0x100004000>
+100003f48: f9400e10    	ldr	x16, [x16, #0x18]
+100003f4c: d61f0200    	br	x16
+100003f50: b0000010    	adrp	x16, 0x100004000 <_time+0x100004000>
+100003f54: f9401210    	ldr	x16, [x16, #0x20]
+100003f58: d61f0200    	br	x16
+100003f5c: b0000010    	adrp	x16, 0x100004000 <_time+0x100004000>
+100003f60: f9401610    	ldr	x16, [x16, #0x28]
+100003f64: d61f0200    	br	x16

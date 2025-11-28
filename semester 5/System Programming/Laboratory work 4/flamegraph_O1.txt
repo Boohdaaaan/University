@@ -1,0 +1,5 @@
+start [dyld] 801
+start [dyld];main [program] 801
+start [dyld];main [program];sleep [system] 801
+start [dyld];main [program];sleep [system];nanosleep [system] 801
+start [dyld];main [program];sleep [system];nanosleep [system];__semwait_signal [system] 801

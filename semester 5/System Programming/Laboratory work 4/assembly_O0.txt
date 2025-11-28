@@ -1,0 +1,246 @@
+
+matrix_O0:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000100003bd0 <__Z11fill_matrixPii>:
+100003bd0: d10083ff    	sub	sp, sp, #0x20
+100003bd4: a9017bfd    	stp	x29, x30, [sp, #0x10]
+100003bd8: 910043fd    	add	x29, sp, #0x10
+100003bdc: f90007e0    	str	x0, [sp, #0x8]
+100003be0: b90007e1    	str	w1, [sp, #0x4]
+100003be4: b90003ff    	str	wzr, [sp]
+100003be8: 14000001    	b	0x100003bec <__Z11fill_matrixPii+0x1c>
+100003bec: b94003e8    	ldr	w8, [sp]
+100003bf0: b94007e9    	ldr	w9, [sp, #0x4]
+100003bf4: b94007ea    	ldr	w10, [sp, #0x4]
+100003bf8: 1b0a7d29    	mul	w9, w9, w10
+100003bfc: 6b090108    	subs	w8, w8, w9
+100003c00: 1a9fb7e8    	cset	w8, ge
+100003c04: 370001e8    	tbnz	w8, #0x0, 0x100003c40 <__Z11fill_matrixPii+0x70>
+100003c08: 14000001    	b	0x100003c0c <__Z11fill_matrixPii+0x3c>
+100003c0c: 940000bf    	bl	0x100003f08 <_time+0x100003f08>
+100003c10: 52800149    	mov	w9, #0xa                ; =10
+100003c14: 1ac90c08    	sdiv	w8, w0, w9
+100003c18: 1b097d08    	mul	w8, w8, w9
+100003c1c: 6b080008    	subs	w8, w0, w8
+100003c20: f94007e9    	ldr	x9, [sp, #0x8]
+100003c24: b98003ea    	ldrsw	x10, [sp]
+100003c28: b82a7928    	str	w8, [x9, x10, lsl #2]
+100003c2c: 14000001    	b	0x100003c30 <__Z11fill_matrixPii+0x60>
+100003c30: b94003e8    	ldr	w8, [sp]
+100003c34: 11000508    	add	w8, w8, #0x1
+100003c38: b90003e8    	str	w8, [sp]
+100003c3c: 17ffffec    	b	0x100003bec <__Z11fill_matrixPii+0x1c>
+100003c40: a9417bfd    	ldp	x29, x30, [sp, #0x10]
+100003c44: 910083ff    	add	sp, sp, #0x20
+100003c48: d65f03c0    	ret
+
+0000000100003c4c <__Z15multiply_matrixPiS_S_i>:
+100003c4c: d100c3ff    	sub	sp, sp, #0x30
+100003c50: f90017e0    	str	x0, [sp, #0x28]
+100003c54: f90013e1    	str	x1, [sp, #0x20]
+100003c58: f9000fe2    	str	x2, [sp, #0x18]
+100003c5c: b90017e3    	str	w3, [sp, #0x14]
+100003c60: b90013ff    	str	wzr, [sp, #0x10]
+100003c64: 14000001    	b	0x100003c68 <__Z15multiply_matrixPiS_S_i+0x1c>
+100003c68: b94013e8    	ldr	w8, [sp, #0x10]
+100003c6c: b94017e9    	ldr	w9, [sp, #0x14]
+100003c70: 6b090108    	subs	w8, w8, w9
+100003c74: 1a9fb7e8    	cset	w8, ge
+100003c78: 37000788    	tbnz	w8, #0x0, 0x100003d68 <__Z15multiply_matrixPiS_S_i+0x11c>
+100003c7c: 14000001    	b	0x100003c80 <__Z15multiply_matrixPiS_S_i+0x34>
+100003c80: b9000fff    	str	wzr, [sp, #0xc]
+100003c84: 14000001    	b	0x100003c88 <__Z15multiply_matrixPiS_S_i+0x3c>
+100003c88: b9400fe8    	ldr	w8, [sp, #0xc]
+100003c8c: b94017e9    	ldr	w9, [sp, #0x14]
+100003c90: 6b090108    	subs	w8, w8, w9
+100003c94: 1a9fb7e8    	cset	w8, ge
+100003c98: 370005e8    	tbnz	w8, #0x0, 0x100003d54 <__Z15multiply_matrixPiS_S_i+0x108>
+100003c9c: 14000001    	b	0x100003ca0 <__Z15multiply_matrixPiS_S_i+0x54>
+100003ca0: b9000bff    	str	wzr, [sp, #0x8]
+100003ca4: b90007ff    	str	wzr, [sp, #0x4]
+100003ca8: 14000001    	b	0x100003cac <__Z15multiply_matrixPiS_S_i+0x60>
+100003cac: b94007e8    	ldr	w8, [sp, #0x4]
+100003cb0: b94017e9    	ldr	w9, [sp, #0x14]
+100003cb4: 6b090108    	subs	w8, w8, w9
+100003cb8: 1a9fb7e8    	cset	w8, ge
+100003cbc: 37000328    	tbnz	w8, #0x0, 0x100003d20 <__Z15multiply_matrixPiS_S_i+0xd4>
+100003cc0: 14000001    	b	0x100003cc4 <__Z15multiply_matrixPiS_S_i+0x78>
+100003cc4: f94017e8    	ldr	x8, [sp, #0x28]
+100003cc8: b94013e9    	ldr	w9, [sp, #0x10]
+100003ccc: b94017ea    	ldr	w10, [sp, #0x14]
+100003cd0: 1b0a7d29    	mul	w9, w9, w10
+100003cd4: b94007ea    	ldr	w10, [sp, #0x4]
+100003cd8: 0b0a0129    	add	w9, w9, w10
+100003cdc: b869d908    	ldr	w8, [x8, w9, sxtw #2]
+100003ce0: f94013e9    	ldr	x9, [sp, #0x20]
+100003ce4: b94007ea    	ldr	w10, [sp, #0x4]
+100003ce8: b94017eb    	ldr	w11, [sp, #0x14]
+100003cec: 1b0b7d4a    	mul	w10, w10, w11
+100003cf0: b9400feb    	ldr	w11, [sp, #0xc]
+100003cf4: 0b0b014a    	add	w10, w10, w11
+100003cf8: b86ad929    	ldr	w9, [x9, w10, sxtw #2]
+100003cfc: 1b097d09    	mul	w9, w8, w9
+100003d00: b9400be8    	ldr	w8, [sp, #0x8]
+100003d04: 0b090108    	add	w8, w8, w9
+100003d08: b9000be8    	str	w8, [sp, #0x8]
+100003d0c: 14000001    	b	0x100003d10 <__Z15multiply_matrixPiS_S_i+0xc4>
+100003d10: b94007e8    	ldr	w8, [sp, #0x4]
+100003d14: 11000508    	add	w8, w8, #0x1
+100003d18: b90007e8    	str	w8, [sp, #0x4]
+100003d1c: 17ffffe4    	b	0x100003cac <__Z15multiply_matrixPiS_S_i+0x60>
+100003d20: b9400be8    	ldr	w8, [sp, #0x8]
+100003d24: f9400fe9    	ldr	x9, [sp, #0x18]
+100003d28: b94013ea    	ldr	w10, [sp, #0x10]
+100003d2c: b94017eb    	ldr	w11, [sp, #0x14]
+100003d30: 1b0b7d4a    	mul	w10, w10, w11
+100003d34: b9400feb    	ldr	w11, [sp, #0xc]
+100003d38: 0b0b014a    	add	w10, w10, w11
+100003d3c: b82ad928    	str	w8, [x9, w10, sxtw #2]
+100003d40: 14000001    	b	0x100003d44 <__Z15multiply_matrixPiS_S_i+0xf8>
+100003d44: b9400fe8    	ldr	w8, [sp, #0xc]
+100003d48: 11000508    	add	w8, w8, #0x1
+100003d4c: b9000fe8    	str	w8, [sp, #0xc]
+100003d50: 17ffffce    	b	0x100003c88 <__Z15multiply_matrixPiS_S_i+0x3c>
+100003d54: 14000001    	b	0x100003d58 <__Z15multiply_matrixPiS_S_i+0x10c>
+100003d58: b94013e8    	ldr	w8, [sp, #0x10]
+100003d5c: 11000508    	add	w8, w8, #0x1
+100003d60: b90013e8    	str	w8, [sp, #0x10]
+100003d64: 17ffffc1    	b	0x100003c68 <__Z15multiply_matrixPiS_S_i+0x1c>
+100003d68: 9100c3ff    	add	sp, sp, #0x30
+100003d6c: d65f03c0    	ret
+
+0000000100003d70 <__Z13recursive_sumi>:
+100003d70: d10083ff    	sub	sp, sp, #0x20
+100003d74: a9017bfd    	stp	x29, x30, [sp, #0x10]
+100003d78: 910043fd    	add	x29, sp, #0x10
+100003d7c: b9000be0    	str	w0, [sp, #0x8]
+100003d80: b9400be8    	ldr	w8, [sp, #0x8]
+100003d84: 71000108    	subs	w8, w8, #0x0
+100003d88: 1a9fd7e8    	cset	w8, gt
+100003d8c: 37000088    	tbnz	w8, #0x0, 0x100003d9c <__Z13recursive_sumi+0x2c>
+100003d90: 14000001    	b	0x100003d94 <__Z13recursive_sumi+0x24>
+100003d94: b81fc3bf    	stur	wzr, [x29, #-0x4]
+100003d98: 1400000a    	b	0x100003dc0 <__Z13recursive_sumi+0x50>
+100003d9c: b9400be8    	ldr	w8, [sp, #0x8]
+100003da0: b90007e8    	str	w8, [sp, #0x4]
+100003da4: b9400be8    	ldr	w8, [sp, #0x8]
+100003da8: 71000500    	subs	w0, w8, #0x1
+100003dac: 97fffff1    	bl	0x100003d70 <__Z13recursive_sumi>
+100003db0: b94007e8    	ldr	w8, [sp, #0x4]
+100003db4: 0b000108    	add	w8, w8, w0
+100003db8: b81fc3a8    	stur	w8, [x29, #-0x4]
+100003dbc: 14000001    	b	0x100003dc0 <__Z13recursive_sumi+0x50>
+100003dc0: b85fc3a0    	ldur	w0, [x29, #-0x4]
+100003dc4: a9417bfd    	ldp	x29, x30, [sp, #0x10]
+100003dc8: 910083ff    	add	sp, sp, #0x20
+100003dcc: d65f03c0    	ret
+
+0000000100003dd0 <_main>:
+100003dd0: d101c3ff    	sub	sp, sp, #0x70
+100003dd4: a9067bfd    	stp	x29, x30, [sp, #0x60]
+100003dd8: 910183fd    	add	x29, sp, #0x60
+100003ddc: d29c8008    	mov	x8, #0xe400             ; =58368
+100003de0: f2a00ae8    	movk	x8, #0x57, lsl #16
+100003de4: f9000be8    	str	x8, [sp, #0x10]
+100003de8: b81fc3bf    	stur	wzr, [x29, #-0x4]
+100003dec: d2800000    	mov	x0, #0x0                ; =0
+100003df0: 94000049    	bl	0x100003f14 <_time+0x100003f14>
+100003df4: 9400004b    	bl	0x100003f20 <_time+0x100003f20>
+100003df8: f9400be0    	ldr	x0, [sp, #0x10]
+100003dfc: 9400004c    	bl	0x100003f2c <_time+0x100003f2c>
+100003e00: aa0003e8    	mov	x8, x0
+100003e04: f9400be0    	ldr	x0, [sp, #0x10]
+100003e08: f81f03a8    	stur	x8, [x29, #-0x10]
+100003e0c: 94000048    	bl	0x100003f2c <_time+0x100003f2c>
+100003e10: aa0003e8    	mov	x8, x0
+100003e14: f9400be0    	ldr	x0, [sp, #0x10]
+100003e18: f81e83a8    	stur	x8, [x29, #-0x18]
+100003e1c: 94000044    	bl	0x100003f2c <_time+0x100003f2c>
+100003e20: f81e03a0    	stur	x0, [x29, #-0x20]
+100003e24: f85f03a0    	ldur	x0, [x29, #-0x10]
+100003e28: 52809601    	mov	w1, #0x4b0              ; =1200
+100003e2c: b9001fe1    	str	w1, [sp, #0x1c]
+100003e30: 97ffff68    	bl	0x100003bd0 <__Z11fill_matrixPii>
+100003e34: b9401fe1    	ldr	w1, [sp, #0x1c]
+100003e38: f85e83a0    	ldur	x0, [x29, #-0x18]
+100003e3c: 97ffff65    	bl	0x100003bd0 <__Z11fill_matrixPii>
+100003e40: 9400003e    	bl	0x100003f38 <_time+0x100003f38>
+100003e44: f81d83a0    	stur	x0, [x29, #-0x28]
+100003e48: b81d43bf    	stur	wzr, [x29, #-0x2c]
+100003e4c: 14000001    	b	0x100003e50 <_main+0x80>
+100003e50: b85d43a8    	ldur	w8, [x29, #-0x2c]
+100003e54: 71001508    	subs	w8, w8, #0x5
+100003e58: 1a9fb7e8    	cset	w8, ge
+100003e5c: 37000188    	tbnz	w8, #0x0, 0x100003e8c <_main+0xbc>
+100003e60: 14000001    	b	0x100003e64 <_main+0x94>
+100003e64: f85f03a0    	ldur	x0, [x29, #-0x10]
+100003e68: f85e83a1    	ldur	x1, [x29, #-0x18]
+100003e6c: f85e03a2    	ldur	x2, [x29, #-0x20]
+100003e70: 52809603    	mov	w3, #0x4b0              ; =1200
+100003e74: 97ffff76    	bl	0x100003c4c <__Z15multiply_matrixPiS_S_i>
+100003e78: 14000001    	b	0x100003e7c <_main+0xac>
+100003e7c: b85d43a8    	ldur	w8, [x29, #-0x2c]
+100003e80: 11000508    	add	w8, w8, #0x1
+100003e84: b81d43a8    	stur	w8, [x29, #-0x2c]
+100003e88: 17fffff2    	b	0x100003e50 <_main+0x80>
+100003e8c: 52807d00    	mov	w0, #0x3e8              ; =1000
+100003e90: 97ffffb8    	bl	0x100003d70 <__Z13recursive_sumi>
+100003e94: b90033e0    	str	w0, [sp, #0x30]
+100003e98: 94000028    	bl	0x100003f38 <_time+0x100003f38>
+100003e9c: f90017e0    	str	x0, [sp, #0x28]
+100003ea0: f94017e8    	ldr	x8, [sp, #0x28]
+100003ea4: f85d83a9    	ldur	x9, [x29, #-0x28]
+100003ea8: eb090108    	subs	x8, x8, x9
+100003eac: 9e630100    	ucvtf	d0, x8
+100003eb0: 90000008    	adrp	x8, 0x100003000 <_time+0x100003000>
+100003eb4: fd47b501    	ldr	d1, [x8, #0xf68]
+100003eb8: 1e611800    	fdiv	d0, d0, d1
+100003ebc: fd0013e0    	str	d0, [sp, #0x20]
+100003ec0: fd4013e0    	ldr	d0, [sp, #0x20]
+100003ec4: 910003e8    	mov	x8, sp
+100003ec8: fd000100    	str	d0, [x8]
+100003ecc: 90000000    	adrp	x0, 0x100003000 <_time+0x100003000>
+100003ed0: 913dc000    	add	x0, x0, #0xf70
+100003ed4: 9400001c    	bl	0x100003f44 <_time+0x100003f44>
+100003ed8: f85f03a0    	ldur	x0, [x29, #-0x10]
+100003edc: 9400001d    	bl	0x100003f50 <_time+0x100003f50>
+100003ee0: f85e83a0    	ldur	x0, [x29, #-0x18]
+100003ee4: 9400001b    	bl	0x100003f50 <_time+0x100003f50>
+100003ee8: f85e03a0    	ldur	x0, [x29, #-0x20]
+100003eec: 94000019    	bl	0x100003f50 <_time+0x100003f50>
+100003ef0: 52800020    	mov	w0, #0x1                ; =1
+100003ef4: 9400001a    	bl	0x100003f5c <_time+0x100003f5c>
+100003ef8: 52800000    	mov	w0, #0x0                ; =0
+100003efc: a9467bfd    	ldp	x29, x30, [sp, #0x60]
+100003f00: 9101c3ff    	add	sp, sp, #0x70
+100003f04: d65f03c0    	ret
+
+Disassembly of section __TEXT,__stubs:
+
+0000000100003f08 <__stubs>:
+100003f08: b0000010    	adrp	x16, 0x100004000 <_time+0x100004000>
+100003f0c: f9400210    	ldr	x16, [x16]
+100003f10: d61f0200    	br	x16
+100003f14: b0000010    	adrp	x16, 0x100004000 <_time+0x100004000>
+100003f18: f9400610    	ldr	x16, [x16, #0x8]
+100003f1c: d61f0200    	br	x16
+100003f20: b0000010    	adrp	x16, 0x100004000 <_time+0x100004000>
+100003f24: f9400a10    	ldr	x16, [x16, #0x10]
+100003f28: d61f0200    	br	x16
+100003f2c: b0000010    	adrp	x16, 0x100004000 <_time+0x100004000>
+100003f30: f9400e10    	ldr	x16, [x16, #0x18]
+100003f34: d61f0200    	br	x16
+100003f38: b0000010    	adrp	x16, 0x100004000 <_time+0x100004000>
+100003f3c: f9401210    	ldr	x16, [x16, #0x20]
+100003f40: d61f0200    	br	x16
+100003f44: b0000010    	adrp	x16, 0x100004000 <_time+0x100004000>
+100003f48: f9401610    	ldr	x16, [x16, #0x28]
+100003f4c: d61f0200    	br	x16
+100003f50: b0000010    	adrp	x16, 0x100004000 <_time+0x100004000>
+100003f54: f9401a10    	ldr	x16, [x16, #0x30]
+100003f58: d61f0200    	br	x16
+100003f5c: b0000010    	adrp	x16, 0x100004000 <_time+0x100004000>
+100003f60: f9401e10    	ldr	x16, [x16, #0x38]
+100003f64: d61f0200    	br	x16

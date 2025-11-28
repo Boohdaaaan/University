@@ -1,0 +1,13 @@
+start [dyld] 11818
+start [dyld];main [program] 11818
+start [dyld];main [program];multiply_matrix(int*, int*, int*, int) [program] 7757
+start [dyld];main [program];multiply_matrix(int*, int*, int*, int) [program];multiply_matrix(int*, int*, int*, int) [program] 3146
+start [dyld];main [program];sleep [system] 850
+start [dyld];main [program];sleep [system];nanosleep [system] 850
+start [dyld];main [program];sleep [system];nanosleep [system];__semwait_signal [system] 850
+start [dyld];main [program];multiply_matrix(int*, int*, int*, int) [program];multiply_matrix(int*, int*, int*, int) [program];multiply_matrix(int*, int*, int*, int) [program] 50
+start [dyld];main [program];multiply_matrix(int*, int*, int*, int) [program];multiply_matrix(int*, int*, int*, int) [program];multiply_matrix(int*, int*, int*, int) [program];multiply_matrix(int*, int*, int*, int) [program] 14
+start [dyld];main [program];free_medium [system] 1
+start [dyld];main [program];free_medium [system];mvm_madvise_free_plat [system] 1
+start [dyld];main [program];free_medium [system];mvm_madvise_free_plat [system];<deduplicated_symbol> [system] 1
+start [dyld];main [program];free_medium [system];mvm_madvise_free_plat [system];<deduplicated_symbol> [system];madvise [system] 1

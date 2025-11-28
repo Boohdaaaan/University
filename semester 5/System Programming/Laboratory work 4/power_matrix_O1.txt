@@ -1,0 +1,280 @@
+Machine model: Mac15,6
+OS version: 24E248
+Boot arguments: 
+Boot time: Wed Sep 24 21:41:06 2025
+
+
+
+*** Sampled system activity (Fri Nov 28 11:47:37 2025 +0200) (1009.53ms elapsed) ***
+
+*** Running tasks ***
+
+Name                               ID     CPU ms/s  User%  Deadlines (<2 ms, 2-5 ms)  Wakeups (Intr, Pkg idle)
+DEAD_TASKS                         -1     221.75    53.19  89.15   0.99               95.09   0.99              
+Cursor Helper (Renderer)           45023  195.18    93.38  13.86   9.90               48.50   1.98              
+com.apple.WebKit.GPU               73750  124.04    97.14  0.00    0.00               57.40   1.98              
+Cursor Helper (Plugin)             46630  102.07    53.43  1410.37 0.00               1410.37 58.39             
+coreaudiod                         53163  45.45     65.05  0.00    108.87             469.13  9.90              
+matrix_O1                          3171   14.76     92.83  0.00    0.00               0.00    0.00              
+Cursor Helper (GPU)                36375  41.59     53.98  0.00    0.99               253.37  5.94              
+com.apple.WebKit.WebContent        65794  295.37    82.10  81.16   39.59              257.33  31.67             
+powermetrics                       3170   10.99     7.31   0.00    0.00               0.99    0.00              
+kernel_task                        0      89.42     0.00   482.00  0.99               784.86  87.10             
+Cursor Helper                      36448  4.49      46.31  13.86   2.97               21.77   0.00              
+com.apple.WebKit.WebContent        44970  52.41     53.41  3.96    1.98               26.72   0.99              
+WindowServer                       166    46.26     52.29  7.92    0.00               154.40  17.82             
+com.apple.WebKit.Networking        73730  48.14     37.01  0.00    0.00               16.83   0.00              
+bluetoothd                         72855  46.18     25.17  0.00    0.00               134.60  13.86             
+Cursor                             36371  1.76      76.71  0.00    0.00               0.00    0.00              
+notifyd                            160    3.06      59.64  0.00    0.00               0.00    0.00              
+launchd                            1      2.06      58.27  0.00    0.00               0.00    0.00              
+opendirectoryd                     136    4.97      40.30  0.00    0.00               0.00    0.00              
+logioptionsplus_agent              739    15.11     56.67  3.96    0.00               27.71   0.99              
+Cursor Helper                      46629  1.65      51.91  5.94    0.00               7.92    0.00              
+com.apple.DriverKit-AppleBCMWLAN   317    14.93     61.47  0.00    0.00               165.29  37.61             
+Microsoft Outlook                  44878  9.34      83.87  0.00    0.00               15.84   0.00              
+launchservicesd                    139    8.51      54.92  0.00    0.00               0.00    0.00              
+bash                               3167   0.38      22.42  0.99    0.00               0.99    0.00              
+logd                               96     2.72      31.67  0.00    0.00               0.00    0.00              
+Microsoft Teams WebView            44848  4.89      83.64  0.00    0.00               0.00    0.00              
+com.apple.WebKit.WebContent        44940  4.02      87.60  0.00    0.00               20.78   0.99              
+com.apple.AmbientDisplayAgent      426    1.99      57.92  0.00    0.00               0.00    0.00              
+Spotify Helper (Renderer)          44834  2.46      58.11  0.00    0.00               9.90    0.00              
+com.apple.appkit.xpc.openAndSave   45028  0.07      55.48  0.00    0.00               0.00    0.00              
+Spotify Helper (GPU)               44829  2.90      63.77  0.00    0.00               9.90    0.99              
+airportd                           184    2.38      55.38  0.00    0.00               0.99    0.00              
+syspolicyd                         72863  2.02      44.95  0.00    0.00               4.95    0.00              
+Microsoft Teams WebView Helper (   44912  2.26      84.06  0.00    0.00               0.99    0.00              
+corebrightnessd                    162    1.51      49.23  0.00    0.00               0.99    0.00              
+Safari                             73724  1.66      74.91  0.00    0.00               9.90    0.99              
+mDNSResponder                      210    1.87      48.02  2.97    0.00               3.96    0.00              
+Spotify                            44824  1.49      42.06  0.00    0.00               25.73   2.97              
+audioclocksyncd                    274    0.82      48.55  0.00    0.00               0.00    0.00              
+fseventsd                          100    1.23      13.84  0.00    0.00               2.97    0.00              
+MSTeams                            44842  1.13      64.67  0.00    0.00               1.98    0.00              
+Finder                             584    0.55      41.27  0.00    0.00               0.00    0.00              
+com.cisco.anyconnect.macos.acsoc   311    1.03      68.55  0.00    0.00               0.00    0.00              
+Cursor Helper (Plugin)             57161  0.03      60.74  0.99    0.00               1.98    0.00              
+pgAdmin 4 Helper (GPU)             85784  0.64      84.97  0.00    0.00               1.98    0.99              
+WirelessRadioManagerd              43013  0.28      58.29  0.00    0.00               0.00    0.00              
+Cursor Helper (Plugin)             57162  0.08      63.60  0.99    0.00               1.98    0.00              
+fileproviderd                      72851  0.27      52.29  0.00    0.00               2.97    1.98              
+com.apple.WebKit.WebContent        44533  0.36      54.44  1.98    0.00               11.88   1.98              
+remotepairingd                     660    0.26      18.80  0.00    0.00               4.95    0.99              
+trustd                             29757  0.36      16.99  0.00    0.00               4.95    0.00              
+PerfPowerServices                  3862   0.30      61.28  0.00    0.00               0.00    0.00              
+apsd                               138    0.36      17.95  0.00    0.00               4.95    0.99              
+com.apple.WebKit.WebContent        44329  0.35      55.85  0.99    0.99               9.90    0.99              
+dataaccessd                        27629  0.32      17.70  0.00    0.00               4.95    0.00              
+duetexpertd                        6135   0.26      61.16  0.00    0.00               0.00    0.00              
+IntuneMdmDaemon                    61372  0.28      19.24  0.00    0.00               4.95    0.00              
+thermalmonitord                    135    0.22      49.03  0.00    0.00               1.98    0.00              
+symptomsd                          294    0.16      31.94  0.00    0.00               0.00    0.00              
+appstored                          61265  0.13      26.58  0.00    0.00               0.99    0.00              
+Maccy                              751    0.22      82.34  0.00    0.00               1.98    0.00              
+nearbyd                            582    0.22      30.34  0.00    0.00               0.99    0.00              
+ContinuityCaptureAgent             566    0.19      20.19  0.00    0.00               1.98    0.00              
+Cisco AnyConnect Secure Mobility   80702  0.14      30.68  0.00    0.00               3.96    0.00              
+audioanalyticsd                    71563  0.12      34.31  0.00    0.00               0.99    0.00              
+identityservicesd                  504    0.10      16.22  0.00    0.00               0.99    0.00              
+Web App                            97508  0.10      13.36  0.00    0.00               0.99    0.00              
+locationd                          144    0.10      55.69  0.00    0.00               0.99    0.00              
+Python                             85787  0.16      55.67  0.00    0.00               1.98    0.00              
+nsurlsessiond                      489    0.06      32.35  0.00    0.00               0.99    0.00              
+mds                                124    0.05      40.87  0.00    0.00               0.99    0.00              
+appleh13camerad                    297    0.10      19.67  0.00    0.00               0.99    0.00              
+NotificationCenter                 534    0.04      22.37  0.00    0.00               0.99    0.00              
+replayd                            1205   0.09      16.64  0.00    0.00               0.99    0.00              
+com.apple.audio.Core-Audio-Drive   53172  0.01      32.32  0.00    0.00               0.99    0.00              
+Microsoft Teams WebView Helper (   44854  0.06      21.22  0.00    0.00               0.99    0.00              
+Spotlight                          641    0.06      19.79  0.00    0.00               0.99    0.00              
+SimStreamProcessorService          39435  0.06      19.69  0.00    0.00               0.99    0.00              
+searchpartyuseragent               34878  0.07      30.31  0.00    0.00               0.99    0.00              
+mediaanalysisd                     54627  0.06      19.59  0.00    0.00               0.99    0.99              
+wifip2pd                           56669  0.03      40.72  0.00    0.00               0.00    0.00              
+sharingd                           72848  0.03      66.27  0.00    0.00               0.00    0.00              
+mDNSResponderHelper                286    0.04      44.96  0.00    0.00               0.99    0.00              
+vpnagentd                          307    0.02      17.63  0.00    0.00               0.99    0.00              
+ALL_TASKS                          -2     1444.26   64.50  2122.77 167.40             4131.63 284.29            
+
+**** Processor usage ****
+
+E-Cluster Online: 100%
+E-Cluster HW active frequency: 1236 MHz
+E-Cluster HW active residency:  54.03% (744 MHz:  24% 1044 MHz: 3.1% 1476 MHz:  21% 2004 MHz: 2.0% 2268 MHz: .89% 2448 MHz: .50% 2640 MHz: .82% 2748 MHz: 2.0%)
+E-Cluster idle residency:  45.97%
+CPU 0 frequency: 1225 MHz
+CPU 0 active residency:  33.72% (744 MHz:  16% 1044 MHz: 2.0% 1476 MHz:  12% 2004 MHz: 1.3% 2268 MHz: .51% 2448 MHz: .24% 2640 MHz: .27% 2748 MHz: 1.7%)
+CPU 0 idle residency:  66.28%
+CPU 1 frequency: 1286 MHz
+CPU 1 active residency:  26.71% (744 MHz:  11% 1044 MHz: 1.6% 1476 MHz:  11% 2004 MHz: 1.2% 2268 MHz: .50% 2448 MHz: .39% 2640 MHz: .18% 2748 MHz: 1.3%)
+CPU 1 idle residency:  73.29%
+CPU 2 frequency: 1259 MHz
+CPU 2 active residency:  17.88% (744 MHz: 7.5% 1044 MHz: 1.0% 1476 MHz: 7.3% 2004 MHz: .58% 2268 MHz: .36% 2448 MHz: .16% 2640 MHz: .13% 2748 MHz: .90%)
+CPU 2 idle residency:  82.12%
+CPU 3 frequency: 1311 MHz
+CPU 3 active residency:  11.22% (744 MHz: 4.1% 1044 MHz: .61% 1476 MHz: 5.0% 2004 MHz: .49% 2268 MHz: .17% 2448 MHz: .09% 2640 MHz: .10% 2748 MHz: .67%)
+CPU 3 idle residency:  88.78%
+CPU 4 frequency: 1314 MHz
+CPU 4 active residency:   6.34% (744 MHz: 2.1% 1044 MHz: .52% 1476 MHz: 3.0% 2004 MHz: .27% 2268 MHz: .17% 2448 MHz: .08% 2640 MHz: .02% 2748 MHz: .26%)
+CPU 4 idle residency:  93.66%
+CPU 5 frequency: 1416 MHz
+CPU 5 active residency:   2.87% (744 MHz: .74% 1044 MHz: .16% 1476 MHz: 1.5% 2004 MHz: .20% 2268 MHz: .08% 2448 MHz: .14% 2640 MHz: .01% 2748 MHz: .09%)
+CPU 5 idle residency:  97.13%
+
+P-Cluster HW active frequency: 2593 MHz
+P-Cluster HW active residency:  41.05% (696 MHz: 2.7% 1092 MHz:   0% 1356 MHz: .67% 1596 MHz: 2.2% 1884 MHz: 4.3% 2172 MHz: 2.1% 2424 MHz: 2.1% 2616 MHz: 4.5% 2808 MHz: 3.5% 2988 MHz: 6.0% 3144 MHz: 5.1% 3288 MHz: 3.8% 3420 MHz: 2.5% 3576 MHz: .49% 3624 MHz: .76% 3708 MHz: .15% 3780 MHz: .09% 3864 MHz: .10% 3960 MHz:   0% 4056 MHz:   0%)
+P-Cluster idle residency:  58.95%
+CPU 6 frequency: 2694 MHz
+CPU 6 active residency:   6.15% (696 MHz: .17% 1092 MHz:   0% 1356 MHz: .04% 1596 MHz: .26% 1884 MHz: .86% 2172 MHz: .68% 2424 MHz: .36% 2616 MHz: .24% 2808 MHz: .41% 2988 MHz: 1.1% 3144 MHz: .74% 3288 MHz: .65% 3420 MHz: .20% 3576 MHz: .02% 3624 MHz: .00% 3708 MHz: .02% 3780 MHz:   0% 3864 MHz: .02% 3960 MHz: .09% 4056 MHz: .34%)
+CPU 6 idle residency:  93.85%
+CPU 7 frequency: 2711 MHz
+CPU 7 active residency:   4.08% (696 MHz: .13% 1092 MHz:   0% 1356 MHz: .01% 1596 MHz: .18% 1884 MHz: .37% 2172 MHz: .54% 2424 MHz: .34% 2616 MHz: .10% 2808 MHz: .30% 2988 MHz: .67% 3144 MHz: .69% 3288 MHz: .30% 3420 MHz: .16% 3576 MHz: .03% 3624 MHz:   0% 3708 MHz: .00% 3780 MHz:   0% 3864 MHz: .01% 3960 MHz: .06% 4056 MHz: .20%)
+CPU 7 idle residency:  95.92%
+CPU 8 frequency: 2584 MHz
+CPU 8 active residency:  13.72% (696 MHz: 1.0% 1092 MHz:   0% 1356 MHz: .35% 1596 MHz: .95% 1884 MHz: 1.7% 2172 MHz: 1.1% 2424 MHz: .95% 2616 MHz: 1.0% 2808 MHz: .51% 2988 MHz: 1.4% 3144 MHz: 1.3% 3288 MHz: 1.0% 3420 MHz: .75% 3576 MHz: .03% 3624 MHz: .01% 3708 MHz: .04% 3780 MHz: .01% 3864 MHz: .01% 3960 MHz: .49% 4056 MHz: 1.1%)
+CPU 8 idle residency:  86.28%
+CPU 9 frequency: 2790 MHz
+CPU 9 active residency:  23.49% (696 MHz: .96% 1092 MHz:   0% 1356 MHz: .27% 1596 MHz: .50% 1884 MHz: 1.2% 2172 MHz: 1.4% 2424 MHz: 1.0% 2616 MHz: 3.2% 2808 MHz: 2.2% 2988 MHz: 3.9% 3144 MHz: 3.5% 3288 MHz: 2.5% 3420 MHz: 1.4% 3576 MHz: .17% 3624 MHz: .05% 3708 MHz: .03% 3780 MHz: .00% 3864 MHz: .04% 3960 MHz: .14% 4056 MHz: .98%)
+CPU 9 idle residency:  76.51%
+CPU 10 frequency: 2722 MHz
+CPU 10 active residency:  17.54% (696 MHz: .63% 1092 MHz:   0% 1356 MHz: .29% 1596 MHz: 1.3% 1884 MHz: 1.7% 2172 MHz: 1.2% 2424 MHz: 1.0% 2616 MHz: 1.4% 2808 MHz: 1.3% 2988 MHz: 2.5% 3144 MHz: 2.0% 3288 MHz: 1.1% 3420 MHz: .81% 3576 MHz: .20% 3624 MHz: .07% 3708 MHz: .08% 3780 MHz: .01% 3864 MHz: .08% 3960 MHz: .59% 4056 MHz: 1.3%)
+CPU 10 idle residency:  82.46%
+
+CPU Power: 1240 mW
+GPU Power: 19 mW
+ANE Power: 0 mW
+Combined Power (CPU + GPU + ANE): 1259 mW
+
+
+*** Sampled system activity (Fri Nov 28 11:47:38 2025 +0200) (1013.44ms elapsed) ***
+
+*** Running tasks ***
+
+Name                               ID     CPU ms/s  User%  Deadlines (<2 ms, 2-5 ms)  Wakeups (Intr, Pkg idle)
+com.apple.WebKit.GPU               73750  144.64    96.90  0.00    0.00               59.00   3.93              
+Cursor Helper (Renderer)           45023  236.59    91.75  9.83    8.85               34.42   1.97              
+DEAD_TASKS                         -1     38.84     72.29  0.00    0.00               0.99    0.00              
+coreaudiod                         53163  51.53     63.24  0.00    107.18             468.05  7.87              
+com.apple.WebKit.WebContent        65794  333.32    78.50  80.63   31.47              251.73  19.67             
+Cursor Helper (GPU)                36375  53.41     51.57  0.00    0.00               245.83  12.78             
+Cursor Helper (Plugin)             46630  56.11     41.85  876.12  0.00               876.12  53.10             
+powermetrics                       3170   24.15     6.35   0.00    0.00               0.98    0.00              
+kernel_task                        0      101.16    0.00   458.22  0.98               773.86  93.41             
+com.apple.WebKit.WebContent        44970  58.79     46.00  4.92    0.98               26.55   0.00              
+com.apple.WebKit.Networking        73730  63.98     31.38  0.00    0.00               16.72   0.98              
+WindowServer                       166    52.31     50.59  12.78   0.00               134.71  17.70             
+bluetoothd                         72855  65.36     23.22  0.00    0.00               133.73  6.88              
+sleep                              3197   1.85      51.10  0.00    0.00               0.00    0.00              
+com.apple.DriverKit-AppleBCMWLAN   317    18.93     61.79  0.00    0.00               153.40  45.23             
+Microsoft Outlook                  44878  8.73      81.79  0.00    0.00               16.72   1.97              
+Cursor Helper                      36448  3.90      37.35  9.83    0.00               16.72   1.97              
+logioptionsplus_agent              739    5.59      52.11  2.95    0.00               25.57   1.97              
+bash                               3167   0.37      16.14  0.00    0.00               0.00    0.00              
+Cursor                             36371  1.63      71.60  0.98    0.00               4.92    0.00              
+notifyd                            160    0.44      65.34  0.00    0.00               0.00    0.00              
+com.apple.AmbientDisplayAgent      426    2.51      56.39  0.00    0.00               0.00    0.00              
+com.apple.WebKit.WebContent        44940  3.34      83.67  0.00    0.00               19.67   0.98              
+launchd                            1      0.32      61.98  0.00    0.00               0.00    0.00              
+Spotify Helper (Renderer)          44834  3.72      55.94  0.00    0.00               10.82   0.00              
+sharingd                           72848  2.12      73.43  0.00    0.00               0.98    0.00              
+Safari                             73724  2.33      70.07  0.00    0.00               11.80   0.00              
+corebrightnessd                    162    2.11      42.89  0.00    0.00               0.98    0.00              
+opendirectoryd                     136    0.85      42.83  0.00    0.00               0.00    0.00              
+symptomsd                          294    0.84      61.19  0.00    0.00               0.00    0.00              
+logd                               96     0.50      27.91  0.00    0.00               0.00    0.00              
+Spotify                            44824  1.38      40.22  0.00    0.00               26.55   2.95              
+audioclocksyncd                    274    1.05      45.50  0.00    0.00               0.00    0.00              
+com.cisco.anyconnect.macos.acsoc   311    1.02      71.31  0.00    0.00               0.00    0.00              
+IntuneMdmDaemon                    61372  0.46      39.96  0.00    0.00               3.93    0.00              
+syspolicyd                         72863  0.49      27.17  0.00    0.00               4.92    0.00              
+Cursor Helper                      36450  0.82      84.64  0.98    0.00               2.95    0.00              
+pgAdmin 4                          85766  0.53      85.02  0.00    0.00               0.98    0.00              
+locationd                          144    0.24      59.77  0.00    0.00               0.98    0.00              
+trustd                             29757  0.34      17.18  0.00    0.00               4.92    0.00              
+dataaccessd                        27629  0.33      16.25  0.00    0.00               4.92    0.00              
+Microsoft Teams WebView            44848  0.41      79.52  0.00    0.00               3.93    0.98              
+PerfPowerServices                  3862   0.40      59.79  0.00    0.00               0.00    0.00              
+duetexpertd                        6135   0.39      52.34  0.00    0.00               0.00    0.00              
+remotepairingd                     660    0.43      16.56  0.00    0.00               4.92    0.00              
+airportd                           184    0.53      67.57  0.00    0.00               0.00    0.00              
+com.apple.WebKit.WebContent        44533  0.38      54.62  1.97    0.98               9.83    0.98              
+com.apple.WebKit.WebContent        44329  0.38      50.59  0.98    1.97               10.82   0.00              
+apsd                               138    0.37      18.72  0.00    0.00               4.92    0.00              
+fileproviderd                      72851  0.28      58.78  0.00    0.00               1.97    0.00              
+amsaccountsd                       19732  0.40      43.66  0.00    0.00               0.98    0.00              
+gamecontrollerd                    90637  0.33      21.82  0.00    0.00               0.98    0.00              
+thermalmonitord                    135    0.27      35.13  0.00    0.00               0.98    0.00              
+Maccy                              751    0.32      77.08  0.00    0.00               1.97    0.00              
+gamecontrolleragentd               90638  0.19      33.19  0.00    0.00               0.98    0.00              
+MSTeams                            44842  0.23      35.47  0.00    0.00               1.97    0.00              
+ContinuityCaptureAgent             566    0.16      22.62  0.00    0.00               1.97    0.00              
+Cisco AnyConnect Secure Mobility   80702  0.21      26.97  0.00    0.00               4.92    0.98              
+systemsoundserverd                 61948  0.19      10.28  0.00    0.00               0.98    0.00              
+Python                             85787  0.19      56.12  0.00    0.00               1.97    0.00              
+com.apple.cmio.registerassistant   164    0.03      33.88  0.00    0.00               0.98    0.00              
+iconservicesagent                  52586  0.08      14.40  0.00    0.00               0.98    0.00              
+appleh13camerad                    297    0.07      20.94  0.00    0.00               0.98    0.00              
+avconferenced                      570    0.07      18.14  0.00    0.00               0.98    0.00              
+com.apple.WebKit.GPU               44882  0.06      14.53  0.00    0.00               0.98    0.00              
+loginwindow                        170    0.08      16.62  0.00    0.00               0.98    0.00              
+nsurlsessiond                      489    0.06      52.42  0.00    0.00               0.98    0.00              
+com.apple.WebKit.GPU               97520  0.05      18.25  0.00    0.00               0.98    0.00              
+remindd                            65775  0.09      35.84  0.00    0.00               0.98    0.00              
+Telegram                           94405  0.06      23.07  0.00    0.00               0.98    0.00              
+wifip2pd                           56669  0.05      38.50  0.00    0.00               0.00    0.00              
+fseventsd                          100    0.06      50.71  0.00    0.00               0.98    0.00              
+mDNSResponderHelper                286    0.06      33.53  0.00    0.00               0.98    0.00              
+com.apple.audio.Core-Audio-Drive   53172  0.05      26.84  0.00    0.00               0.98    0.00              
+vpnagentd                          307    0.03      20.55  0.00    0.00               0.98    0.00              
+postgres                           46533  0.02      42.01  0.00    0.00               0.98    0.00              
+ALL_TASKS                          -2     1358.44   63.86  1465.31 152.94             3415.10 277.27            
+
+**** Processor usage ****
+
+E-Cluster Online: 100%
+E-Cluster HW active frequency: 1325 MHz
+E-Cluster HW active residency:  60.84% (744 MHz:  21% 1044 MHz: 3.9% 1476 MHz:  25% 2004 MHz: 3.9% 2268 MHz: 2.1% 2448 MHz: 1.5% 2640 MHz: 1.3% 2748 MHz: 1.1%)
+E-Cluster idle residency:  39.16%
+CPU 0 frequency: 1287 MHz
+CPU 0 active residency:  36.76% (744 MHz:  14% 1044 MHz: 2.7% 1476 MHz:  15% 2004 MHz: 2.1% 2268 MHz: 1.0% 2448 MHz: .82% 2640 MHz: .56% 2748 MHz: .83%)
+CPU 0 idle residency:  63.24%
+CPU 1 frequency: 1312 MHz
+CPU 1 active residency:  30.39% (744 MHz:  11% 1044 MHz: 2.0% 1476 MHz:  13% 2004 MHz: 2.2% 2268 MHz: .71% 2448 MHz: .57% 2640 MHz: .66% 2748 MHz: .67%)
+CPU 1 idle residency:  69.61%
+CPU 2 frequency: 1382 MHz
+CPU 2 active residency:  22.96% (744 MHz: 6.4% 1044 MHz: 1.8% 1476 MHz:  11% 2004 MHz: 1.7% 2268 MHz: 1.1% 2448 MHz: .68% 2640 MHz: .29% 2748 MHz: .37%)
+CPU 2 idle residency:  77.04%
+CPU 3 frequency: 1376 MHz
+CPU 3 active residency:  14.28% (744 MHz: 4.1% 1044 MHz: .81% 1476 MHz: 7.1% 2004 MHz: .84% 2268 MHz: .41% 2448 MHz: .46% 2640 MHz: .39% 2748 MHz: .19%)
+CPU 3 idle residency:  85.72%
+CPU 4 frequency: 1482 MHz
+CPU 4 active residency:   8.83% (744 MHz: 1.9% 1044 MHz: .52% 1476 MHz: 4.4% 2004 MHz: .93% 2268 MHz: .31% 2448 MHz: .40% 2640 MHz: .26% 2748 MHz: .16%)
+CPU 4 idle residency:  91.17%
+CPU 5 frequency: 1443 MHz
+CPU 5 active residency:   5.76% (744 MHz: 1.3% 1044 MHz: .28% 1476 MHz: 3.0% 2004 MHz: .48% 2268 MHz: .26% 2448 MHz: .18% 2640 MHz: .18% 2748 MHz: .06%)
+CPU 5 idle residency:  94.24%
+
+P-Cluster HW active frequency: 2478 MHz
+P-Cluster HW active residency:  24.16% (696 MHz: 2.9% 1092 MHz:   0% 1356 MHz: 1.2% 1596 MHz: .23% 1884 MHz: 4.6% 2172 MHz: 1.7% 2424 MHz: 1.0% 2616 MHz: .38% 2808 MHz: 1.9% 2988 MHz: 2.9% 3144 MHz: .18% 3288 MHz: .27% 3420 MHz: .18% 3576 MHz: .09% 3624 MHz: 6.2% 3708 MHz: .11% 3780 MHz:   0% 3864 MHz: .09% 3960 MHz:   0% 4056 MHz:   0%)
+P-Cluster idle residency:  75.84%
+CPU 6 frequency: 3595 MHz
+CPU 6 active residency:  16.76% (696 MHz: .86% 1092 MHz:   0% 1356 MHz: .18% 1596 MHz: .02% 1884 MHz: .40% 2172 MHz: .17% 2424 MHz: .09% 2616 MHz: .02% 2808 MHz: .60% 2988 MHz: 1.4% 3144 MHz: .16% 3288 MHz: .24% 3420 MHz: .08% 3576 MHz: .02% 3624 MHz: .63% 3708 MHz: .19% 3780 MHz:   0% 3864 MHz: .13% 3960 MHz:   0% 4056 MHz:  12%)
+CPU 6 idle residency:  83.24%
+CPU 7 frequency: 2877 MHz
+CPU 7 active residency:   1.17% (696 MHz: .01% 1092 MHz:   0% 1356 MHz: .01% 1596 MHz:   0% 1884 MHz: .05% 2172 MHz: .11% 2424 MHz: .04% 2616 MHz: .00% 2808 MHz: .26% 2988 MHz: .42% 3144 MHz: .00% 3288 MHz: .14% 3420 MHz:   0% 3576 MHz:   0% 3624 MHz: .01% 3708 MHz:   0% 3780 MHz:   0% 3864 MHz: .01% 3960 MHz:   0% 4056 MHz: .08%)
+CPU 7 idle residency:  98.83%
+CPU 8 frequency: 1943 MHz
+CPU 8 active residency:   6.03% (696 MHz: 1.5% 1092 MHz:   0% 1356 MHz: .37% 1596 MHz: .07% 1884 MHz: 1.6% 2172 MHz: .64% 2424 MHz: .35% 2616 MHz: .15% 2808 MHz: .30% 2988 MHz: .67% 3144 MHz: .01% 3288 MHz: .09% 3420 MHz: .01% 3576 MHz: .00% 3624 MHz: .12% 3708 MHz: .01% 3780 MHz:   0% 3864 MHz: .00% 3960 MHz:   0% 4056 MHz: .19%)
+CPU 8 idle residency:  93.97%
+CPU 9 frequency: 2384 MHz
+CPU 9 active residency:   5.24% (696 MHz: .32% 1092 MHz:   0% 1356 MHz: .45% 1596 MHz: .04% 1884 MHz: 1.0% 2172 MHz: .75% 2424 MHz: .46% 2616 MHz: .18% 2808 MHz: .77% 2988 MHz: .49% 3144 MHz: .02% 3288 MHz: .07% 3420 MHz: .16% 3576 MHz: .01% 3624 MHz: .12% 3708 MHz: .00% 3780 MHz:   0% 3864 MHz: .02% 3960 MHz:   0% 4056 MHz: .36%)
+CPU 9 idle residency:  94.76%
+CPU 10 frequency: 2460 MHz
+CPU 10 active residency:   4.55% (696 MHz: .27% 1092 MHz:   0% 1356 MHz: .36% 1596 MHz: .08% 1884 MHz: .83% 2172 MHz: .37% 2424 MHz: .24% 2616 MHz: .08% 2808 MHz: .80% 2988 MHz: 1.0% 3144 MHz: .01% 3288 MHz: .04% 3420 MHz: .00% 3576 MHz: .00% 3624 MHz: .11% 3708 MHz: .01% 3780 MHz:   0% 3864 MHz: .01% 3960 MHz:   0% 4056 MHz: .31%)
+CPU 10 idle residency:  95.45%
+
+CPU Power: 844 mW
+GPU Power: 18 mW
+ANE Power: 0 mW
+Combined Power (CPU + GPU + ANE): 861 mW
