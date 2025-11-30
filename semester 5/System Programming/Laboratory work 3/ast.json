@@ -1,0 +1,277 @@
+[
+  {
+    "type": "Function",
+    "name": "main",
+    "returnType": "int",
+    "params": [
+    ],
+    "body":     {
+      "type": "Block",
+      "statements": [
+        {
+          "type": "VarDecl",
+          "varType": "int",
+          "name": "x",
+          "initializer":           {
+            "type": "Literal",
+            "value": "10",
+            "literalType": "int",
+            "line": 3
+          },
+          "line": 3
+        },
+        {
+          "type": "VarDecl",
+          "varType": "int",
+          "name": "y",
+          "initializer":           {
+            "type": "Literal",
+            "value": "20",
+            "literalType": "int",
+            "line": 5
+          },
+          "line": 5
+        },
+        {
+          "type": "VarDecl",
+          "varType": "int",
+          "name": "i",
+          "initializer":           {
+            "type": "Literal",
+            "value": "0",
+            "literalType": "int",
+            "line": 7
+          },
+          "line": 7
+        },
+        {
+          "type": "If",
+          "condition":           {
+            "type": "BinaryOp",
+            "operator": "<",
+            "left":             {
+              "type": "Identifier",
+              "name": "x",
+              "line": 11
+            },
+            "right":             {
+              "type": "Identifier",
+              "name": "y",
+              "line": 11
+            },
+            "line": 11
+          },
+          "thenBlock":           {
+            "type": "Block",
+            "statements": [
+              {
+                "type": "Block",
+                "statements": [
+                  {
+                    "type": "Assign",
+                    "name": "x",
+                    "value":                     {
+                      "type": "BinaryOp",
+                      "operator": "+",
+                      "left":                       {
+                        "type": "Identifier",
+                        "name": "x",
+                        "line": 13
+                      },
+                      "right":                       {
+                        "type": "Identifier",
+                        "name": "y",
+                        "line": 13
+                      },
+                      "line": 13
+                    },
+                    "line": 13
+                  }
+                ],
+                "line": 15
+              }
+            ],
+            "line": 0
+          },
+          "elseBlock":           {
+            "type": "Block",
+            "statements": [
+              {
+                "type": "Block",
+                "statements": [
+                  {
+                    "type": "Assign",
+                    "name": "y",
+                    "value":                     {
+                      "type": "BinaryOp",
+                      "operator": "-",
+                      "left":                       {
+                        "type": "Identifier",
+                        "name": "y",
+                        "line": 17
+                      },
+                      "right":                       {
+                        "type": "Identifier",
+                        "name": "x",
+                        "line": 17
+                      },
+                      "line": 17
+                    },
+                    "line": 17
+                  }
+                ],
+                "line": 19
+              }
+            ],
+            "line": 0
+          },
+          "line": 19
+        },
+        {
+          "type": "While",
+          "condition":           {
+            "type": "BinaryOp",
+            "operator": ">",
+            "left":             {
+              "type": "Identifier",
+              "name": "x",
+              "line": 23
+            },
+            "right":             {
+              "type": "Literal",
+              "value": "0",
+              "literalType": "int",
+              "line": 23
+            },
+            "line": 23
+          },
+          "body":           {
+            "type": "Block",
+            "statements": [
+              {
+                "type": "Block",
+                "statements": [
+                  {
+                    "type": "Assign",
+                    "name": "x",
+                    "value":                     {
+                      "type": "BinaryOp",
+                      "operator": "-",
+                      "left":                       {
+                        "type": "Identifier",
+                        "name": "x",
+                        "line": 25
+                      },
+                      "right":                       {
+                        "type": "Literal",
+                        "value": "1",
+                        "literalType": "int",
+                        "line": 25
+                      },
+                      "line": 25
+                    },
+                    "line": 25
+                  }
+                ],
+                "line": 27
+              }
+            ],
+            "line": 0
+          },
+          "line": 27
+        },
+        {
+          "type": "For",
+          "init": null,
+          "condition":           {
+            "type": "BinaryOp",
+            "operator": "<",
+            "left":             {
+              "type": "Identifier",
+              "name": "i",
+              "line": 31
+            },
+            "right":             {
+              "type": "Literal",
+              "value": "10",
+              "literalType": "int",
+              "line": 31
+            },
+            "line": 31
+          },
+          "increment":           {
+            "type": "BinaryOp",
+            "operator": "+",
+            "left":             {
+              "type": "BinaryOp",
+              "operator": "=",
+              "left":               {
+                "type": "Identifier",
+                "name": "i",
+                "line": 31
+              },
+              "right":               {
+                "type": "Identifier",
+                "name": "i",
+                "line": 31
+              },
+              "line": 31
+            },
+            "right":             {
+              "type": "Literal",
+              "value": "1",
+              "literalType": "int",
+              "line": 31
+            },
+            "line": 31
+          },
+          "body":           {
+            "type": "Block",
+            "statements": [
+              {
+                "type": "Block",
+                "statements": [
+                  {
+                    "type": "Assign",
+                    "name": "y",
+                    "value":                     {
+                      "type": "BinaryOp",
+                      "operator": "+",
+                      "left":                       {
+                        "type": "Identifier",
+                        "name": "y",
+                        "line": 33
+                      },
+                      "right":                       {
+                        "type": "Identifier",
+                        "name": "i",
+                        "line": 33
+                      },
+                      "line": 33
+                    },
+                    "line": 33
+                  }
+                ],
+                "line": 35
+              }
+            ],
+            "line": 0
+          },
+          "line": 35
+        },
+        {
+          "type": "Return",
+          "value":           {
+            "type": "Literal",
+            "value": "0",
+            "literalType": "int",
+            "line": 39
+          },
+          "line": 39
+        }
+      ],
+      "line": 41
+    },
+    "line": 41
+  }
+]

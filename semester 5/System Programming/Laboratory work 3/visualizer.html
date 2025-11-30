@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AST Visualizer</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .controls {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 4px;
+        }
+        input[type="file"] {
+            margin-right: 10px;
+        }
+        button {
+            padding: 8px 16px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        button:hover {
+            background: #45a049;
+        }
+        #ast-container {
+            width: 100%;
+            height: 800px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            overflow: auto;
+            background: white;
+        }
+        .node {
+            cursor: pointer;
+        }
+        .node circle {
+            fill: #fff;
+            stroke: steelblue;
+            stroke-width: 2px;
+        }
+        .node text {
+            font: 12px sans-serif;
+            pointer-events: none;
+        }
+        .link {
+            fill: none;
+            stroke: #ccc;
+            stroke-width: 1.5px;
+        }
+        .node-type-BinaryOp circle { fill: #ff9999; }
+        .node-type-UnaryOp circle { fill: #99ccff; }
+        .node-type-Literal circle { fill: #99ff99; }
+        .node-type-Identifier circle { fill: #ffcc99; }
+        .node-type-If circle { fill: #cc99ff; }
+        .node-type-While circle { fill: #ff99cc; }
+        .node-type-For circle { fill: #99ffcc; }
+        .node-type-Function circle { fill: #ffff99; }
+        .node-type-Call circle { fill: #ccffcc; }
+        .node-type-VarDecl circle { fill: #ffcccc; }
+        .node-type-Assign circle { fill: #ccccff; }
+        .node-type-Block circle { fill: #cccccc; }
+        .node-type-Return circle { fill: #ffccff; }
+        .node-type-Break circle { fill: #ccffff; }
+        .node-type-Continue circle { fill: #ffffcc; }
+        .info {
+            margin-top: 20px;
+            padding: 10px;
+            background: #e3f2fd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>AST Visualizer</h1>
+        <div class="controls">
+            <input type="file" id="fileInput" accept=".json">
+            <button onclick="loadFile()">Завантажити AST</button>
+            <button onclick="resetView()">Скинути вид</button>
+            <span id="status"></span>
+        </div>
+        <div id="ast-container"></div>
+        <div class="info">
+            <strong>Інструкції:</strong> Завантажте JSON файл з AST деревом. Використовуйте мишу для переміщення та масштабування дерева.
+        </div>
+    </div>
+
+    <script>
+        let treeData = null;
+        let svg = null;
+        let g = null;
+        let zoom = null;
+        let root = null;
+
+        function initVisualization() {
+            const container = d3.select("#ast-container");
+            const width = container.node().getBoundingClientRect().width;
+            const height = 800;
+
+            svg = container.append("svg")
+                .attr("width", width)
+                .attr("height", height);
+
+            g = svg.append("g");
+
+            zoom = d3.zoom()
+                .scaleExtent([0.1, 3])
+                .on("zoom", (event) => {
+                    g.attr("transform", event.transform);
+                });
+
+            svg.call(zoom);
+
+            const initialTransform = d3.zoomIdentity.translate(width / 2, 50).scale(1);
+            svg.call(zoom.transform, initialTransform);
+        }
+
+        function loadFile() {
+            const fileInput = document.getElementById("fileInput");
+            const file = fileInput.files[0];
+            
+            if (!file) {
+                document.getElementById("status").textContent = "Будь ласка, виберіть файл";
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const parsed = JSON.parse(e.target.result);
+                    // Якщо це масив, беремо перший елемент або створюємо корінь
+                    if (Array.isArray(parsed)) {
+                        if (parsed.length === 1) {
+                            treeData = parsed[0];
+                        } else {
+                            treeData = {type: "Program", statements: parsed};
+                        }
+                    } else {
+                        treeData = parsed;
+                    }
+                    document.getElementById("status").textContent = "Файл завантажено успішно";
+                    renderTree();
+                } catch (error) {
+                    document.getElementById("status").textContent = "Помилка парсингу JSON: " + error.message;
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        function renderTree() {
+            if (!treeData) return;
+
+            g.selectAll("*").remove();
+
+            const container = d3.select("#ast-container");
+            const width = container.node().getBoundingClientRect().width;
+            const height = 800;
+
+            const tree = d3.tree()
+                .size([height - 100, width - 200])
+                .separation((a, b) => (a.parent == b.parent ? 1 : 2) / a.depth);
+
+            root = d3.hierarchy(treeData, d => {
+                if (!d) return null;
+                const children = [];
+                // BinaryOp та UnaryOp
+                if (d.left) children.push(d.left);
+                if (d.right) children.push(d.right);
+                if (d.operand) children.push(d.operand);
+                // If statement
+                if (d.condition) children.push(d.condition);
+                if (d.thenBlock) children.push(d.thenBlock);
+                if (d.elseBlock) children.push(d.elseBlock);
+                // While/For loops body
+                if (d.body && d.type !== "Function") children.push(d.body);
+                if (d.init) children.push(d.init);
+                if (d.increment) children.push(d.increment);
+                // Return statement
+                if (d.value) children.push(d.value);
+                // Block statements
+                if (d.statements && Array.isArray(d.statements)) {
+                    children.push(...d.statements);
+                }
+                // Function call arguments
+                if (d.args && Array.isArray(d.args)) {
+                    children.push(...d.args);
+                }
+                // Function parameters (може бути масивом пар [type, name] або об'єктів)
+                if (d.params && Array.isArray(d.params)) {
+                    d.params.forEach(p => {
+                        if (Array.isArray(p) && p.length === 2) {
+                            // Пара як масив [type, name]
+                            children.push({type: "Parameter", varType: p[0], name: p[1]});
+                        } else if (typeof p === 'object' && p !== null) {
+                            if (p.first !== undefined && p.second !== undefined) {
+                                // Пара як об'єкт з first/second
+                                children.push({type: "Parameter", varType: p.first, name: p.second});
+                            } else if (p.type) {
+                                children.push({type: "Parameter", name: p.name, varType: p.type});
+                            } else {
+                                // Спробувати знайти type та name в об'єкті
+                                const keys = Object.keys(p);
+                                if (keys.length >= 2) {
+                                    children.push({type: "Parameter", varType: p[keys[0]], name: p[keys[1]]});
+                                }
+                            }
+                        }
+                    });
+                }
+                // VarDecl initializer
+                if (d.initializer) children.push(d.initializer);
+                // Function body (окремо, щоб не конфліктувати з While/For)
+                if (d.body && d.type === "Function") children.push(d.body);
+                return children.length > 0 ? children : null;
+            });
+
+            tree(root);
+
+            const link = g.selectAll(".link")
+                .data(root.links())
+                .enter().append("path")
+                .attr("class", "link")
+                .attr("d", d3.linkHorizontal()
+                    .x(d => d.y)
+                    .y(d => d.x));
+
+            const node = g.selectAll(".node")
+                .data(root.descendants())
+                .enter().append("g")
+                .attr("class", d => "node node-type-" + (d.data.type || "Unknown"))
+                .attr("transform", d => `translate(${d.y},${d.x})`);
+
+            node.append("circle")
+                .attr("r", d => d.depth === 0 ? 10 : d.children ? 8 : 6);
+
+            node.append("text")
+                .attr("dy", ".35em")
+                .attr("x", d => d.children ? -13 : 13)
+                .style("text-anchor", d => d.children ? "end" : "start")
+                .text(d => {
+                    const data = d.data;
+                    if (data.type === "Literal") {
+                        return data.value || data.type;
+                    } else if (data.type === "Identifier") {
+                        return data.name || data.type;
+                    } else if (data.type === "BinaryOp") {
+                        return data.operator || data.type;
+                    } else if (data.type === "UnaryOp") {
+                        return data.operator || data.type;
+                    } else if (data.type === "Call") {
+                        return data.name + "()";
+                    } else if (data.type === "VarDecl") {
+                        return data.varType + " " + data.name;
+                    } else if (data.type === "Assign") {
+                        return data.name + " =";
+                    } else if (data.type === "Function") {
+                        return data.name + "()";
+                    } else if (data.type === "Parameter") {
+                        return data.varType + " " + data.name;
+                    }
+                    return data.type || "Node";
+                });
+
+            node.on("click", function(event, d) {
+                console.log("Clicked node:", d.data);
+            });
+        }
+
+        function resetView() {
+            if (svg) {
+                const width = svg.attr("width");
+                const initialTransform = d3.zoomIdentity.translate(width / 2, 50).scale(1);
+                svg.call(zoom.transform, initialTransform);
+            }
+        }
+
+        // Allow dropping JSON files
+        const container = document.querySelector(".container");
+        container.addEventListener("dragover", (e) => {
+            e.preventDefault();
+        });
+        container.addEventListener("drop", (e) => {
+            e.preventDefault();
+            const file = e.dataTransfer.files[0];
+            if (file && file.type === "application/json") {
+                document.getElementById("fileInput").files = e.dataTransfer.files;
+                loadFile();
+            }
+        });
+
+        // Initialize visualization
+        initVisualization();
+    </script>
+</body>
+</html>
+
