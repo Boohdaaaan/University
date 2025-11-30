@@ -5,20 +5,13 @@ TARGET = lab8
 SOURCE = lab8.l
 
 UNAME := $(shell uname)
-ifeq ($(UNAME), Darwin)
-	# macOS - спробуємо -ll або без бібліотеки
-	FLEX_LIB = -ll
-else
-	# Linux та інші системи
-	FLEX_LIB = -lfl
-endif
+FLEX_LIB = -ll
 
 all: $(TARGET)
 	@echo ""
 	@echo "Збірка завершена! Запустіть: ./$(TARGET) <файл.py>"
 
 $(TARGET): $(SOURCE)
-	@echo "Генерація лексера з Lex-специфікації..."
 	$(FLEX) -o $(TARGET).c $(SOURCE)
 	@echo "Компіляція програми..."
 	@if $(CC) $(CFLAGS) -o $(TARGET) $(TARGET).c $(FLEX_LIB) 2>/dev/null; then \
